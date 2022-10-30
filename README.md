@@ -1,6 +1,6 @@
 # Nix config
 
-Configuration for all my Linux and MacOS hosts using nix pkgs.
+Home configuration for all my Linux and MacOS hosts using nix pkgs.
 
 This configuration builds home-manager per architecture with a config that uses my
 hostnames as config entries:
