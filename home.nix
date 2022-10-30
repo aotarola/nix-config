@@ -48,12 +48,13 @@
         gco = "git checkout";
         ggpush = "git push";
         ggpull = "git pull";
-        hms = "home-manager switch --flake $HOME/.config/nixpkgs#$USER@$(hostname -s)";
+        hms = "home-manager switch --flake ~/.config/nixpkgs#$USER@$(hostname -s)";
         k = "kubectl";
         nci = "npm ci";
         ns = "npm start";
         ls = "lsd";
         ll = "lsd -l";
+        c = "cd ~/.config/nixpkgs";
       };
   };
 
