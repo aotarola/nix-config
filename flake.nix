@@ -14,7 +14,7 @@
       username = "aotarola";
     in
     let
-      getConfig = system: {
+      configFor = system: {
         pkgs = nixpkgs.legacyPackages.${system};
         modules = [
           ./home.nix
@@ -29,7 +29,7 @@
       };
     in
     {
-      homeConfigurations."${username}@ivory" = home-manager.lib.homeManagerConfiguration (getConfig "aarch64-darwin");
-      homeConfigurations."${username}@ebony" = home-manager.lib.homeManagerConfiguration (getConfig "x86_64-darwin");
+      homeConfigurations."${username}@ivory" = home-manager.lib.homeManagerConfiguration (configFor "aarch64-darwin");
+      homeConfigurations."${username}@ebony" = home-manager.lib.homeManagerConfiguration (configFor "x86_64-darwin");
     };
 }
