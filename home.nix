@@ -45,6 +45,7 @@
         gca = "git commit -v -a";
         gc = "git commit";
         gco = "git checkout";
+        ggpush = "git push";
         hm = "home-manager";
         hms = "hm switch";
         k = "kubectl";
