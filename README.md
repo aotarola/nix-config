@@ -36,4 +36,4 @@ Everytime a new config change is done, update the system with:
 hms	
 ```
 
-NOTE: The alias _hms_ stands for `home-manager switch` (although it has more options bundled in, you can see it with `alias hms`)
+NOTE: The alias _hms_ stands for `home-manager switch` (although it has more options bundled in, you can see them with `alias hms`)
