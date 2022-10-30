@@ -46,6 +46,7 @@
         gc = "git commit";
         gco = "git checkout";
         ggpush = "git push";
+        ggpull = "git pull";
         hm = "home-manager";
         hms = "hm switch";
         k = "kubectl";
