@@ -5,8 +5,8 @@ Home configuration for all my Linux and MacOS hosts using nix pkgs.
 This configuration builds [home-manager][hm] per architecture with a config that uses my
 hostnames as config entries:
 
-1. `$USERNAME@ivory`: points to my Mac Mini M1
-1. `$USERNAME@ebony`: points to my Macbook Air Intel
+1. `aotarola@ivory`: points to my Mac Mini M1
+1. `aotarola@ebony`: points to my Macbook Air Intel
 
 Feel free to fork and customize it.
 
