@@ -22,6 +22,12 @@ $ git clone git@github.com:aotarola/nix-config.git ~/.config/nixpkgs
 $ nix build --no-link #homeConfigurations.$USER@$(hostname -s).activationPackage
 ```
 
+1. Activate it
+
+```sh
+$ "$(nix path-info ~/.config/nixpkgs#homeConfigurations.$USER@$(hostname -s).activationPackage)"/activate
+```
+
 ## Usage
 
 Everytime a new config change is done, update the system with:
