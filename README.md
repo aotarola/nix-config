@@ -4,7 +4,7 @@ Configuration for all my Linux and MacOS hosts using nix pkgs.
 
 ## Installation
 
-1. Install [Nix][https://nixos.org/download.html]
+1. Install [Nix](https://nixos.org/download.html)
 
 1. Enable experimental features
 
