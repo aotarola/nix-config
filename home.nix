@@ -48,7 +48,7 @@
         ggpush = "git push";
         ggpull = "git pull";
         hm = "home-manager";
-        hms = "hm switch";
+        hms = "hm switch --flake $HOME/.config/nixpkgs#aotarola@$(hostname -s)";
         k = "kubectl";
         nci = "npm ci";
         ns = "npm start";

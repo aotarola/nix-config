@@ -20,8 +20,8 @@
           ./home.nix
           {
             home = {
-              username = "aotarola";
-              homeDirectory = /Users/aotarola;
+              username = username;
+              homeDirectory = /Users/${username};
               stateVersion = "22.05";
             };
           }
