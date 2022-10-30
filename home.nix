@@ -24,6 +24,7 @@
       colima
       rustup
       elmPackages.elm-language-server
+      git-open
     ];
 
     sessionVariables = {
@@ -47,8 +48,7 @@
         gco = "git checkout";
         ggpush = "git push";
         ggpull = "git pull";
-        hm = "home-manager";
-        hms = "hm switch --flake $HOME/.config/nixpkgs#aotarola@$(hostname -s)";
+        hms = "home-manager switch --flake $HOME/.config/nixpkgs#$USER@$(hostname -s)";
         k = "kubectl";
         nci = "npm ci";
         ns = "npm start";
