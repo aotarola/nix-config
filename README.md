@@ -25,7 +25,7 @@ Feel free to fork and customize it.
     ```sh
     echo "experimental-features = nix-command flakes" > ~/.config/nix/nix.conf
     ```
-1. clone the repo
+1. Clone the repo
 
     ```sh
     git clone git@github.com:aotarola/nix-config.git ~/.config/nixpkgs
