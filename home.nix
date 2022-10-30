@@ -128,6 +128,9 @@
         cmd = "difft \"$LOCAL\" \"$REMOTE\"";
         prompt = false;
       };
+      alias = {
+        repo = "open";
+      };
       init = {
         defaultBranch = "main";
       };
