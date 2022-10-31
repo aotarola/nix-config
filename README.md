@@ -55,6 +55,4 @@ hms
 _NOTE_: The alias _hms_ stands for `home-manager switch` (although it has more options bundled in, you can see them with `alias hms`)
 
 _CAVEAT_: If you are configuring a new host from scratch, you might not have 
-access to git, if that is so, feel free to download this config as a zip file 
-and put it in `~/.config/nixpkgs`. You'll need to add the git remote if you 
-want to sync with upstream tho.
+access to git, if that is so, feel free to download a binary for it.
