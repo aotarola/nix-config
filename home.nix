@@ -8,6 +8,7 @@
       tree
       nodejs-16_x
       ncdu
+      deno
       rnix-lsp
       yaml-language-server
       difftastic
