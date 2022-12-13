@@ -4,7 +4,6 @@
   home = {
 
     packages = with pkgs; [
-      lsd
       tree
       nodejs-16_x
       ncdu
@@ -19,6 +18,7 @@
       jq
       wget
       btop
+      lsd
       docker
       docker-compose
       kubectl
@@ -26,6 +26,7 @@
       rustup
       elmPackages.elm-language-server
       git-open
+      python3
     ];
 
     sessionVariables = {
@@ -51,10 +52,9 @@
         ggpull = "git pull";
         hms = "nix profile list | { grep 'home-manager-path$' || test $? = 1; } | awk -F ' ' '{ print $4 }' | cut -d ' ' -f 4 | xargs -t $DRY_RUN_CMD nix profile remove $VERBOSE_ARG && \"$(nix path-info ~/.config/nixpkgs#homeConfigurations.$USER@$(hostname -s).activationPackage)\"/activate";
         k = "kubectl";
+        ls = "lsd";
         nci = "npm ci";
         ns = "npm start";
-        ls = "lsd";
-        ll = "lsd -l";
         c = "cd ~/.config/nixpkgs";
       };
   };
