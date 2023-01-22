@@ -5,8 +5,10 @@
 
     packages = with pkgs; [
       tree
+      elmPackages.elm-json
       nodejs-16_x
       ncdu
+      gh
       deno
       rnix-lsp
       yaml-language-server
