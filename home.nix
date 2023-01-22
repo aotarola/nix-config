@@ -58,6 +58,10 @@
         nci = "npm ci";
         ns = "npm start";
         c = "cd ~/.config/nixpkgs";
+        gws = "git wf start";
+        gwd = "git wf done";
+        gwp = "git wf pr";
+        gwa = "git wf abort";
       };
   };
 
@@ -67,7 +71,6 @@
     enable = true;
     enableZshIntegration = true;
   };
-
 
   programs.zsh = {
     enable = true;
