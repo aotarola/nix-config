@@ -4,7 +4,11 @@
   home = {
 
     packages = with pkgs; [
+      less
       tree
+      nodePackages.fixjson
+      nodePackages_latest.vscode-langservers-extracted
+      python310Packages.pipx
       elmPackages.elm-json
       nodejs-16_x
       ncdu
