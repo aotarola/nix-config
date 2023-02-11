@@ -4,35 +4,36 @@
   home = {
 
     packages = with pkgs; [
-      less
-      tree
-      nodePackages.fixjson
-      nodePackages_latest.vscode-langservers-extracted
-      python310Packages.pipx
-      elmPackages.elm-json
-      nodejs-16_x
-      ncdu
-      gh
-      deno
-      rnix-lsp
-      yaml-language-server
-      difftastic
-      tree-sitter
-      fd
-      neovim
-      pyright
-      jq
-      wget
       btop
-      lsd
+      colima
+      deno
+      difftastic
       docker
       docker-compose
-      kubectl
-      colima
-      rustup
+      elmPackages.elm-json
       elmPackages.elm-language-server
+      exercism
+      fd
+      gh
       git-open
+      jq
+      kubectl
+      less
+      lsd
+      ncdu
+      neovim
+      nodePackages.fixjson
+      nodePackages_latest.vscode-langservers-extracted
+      nodejs-16_x
+      pyright
       python3
+      python310Packages.pipx
+      rnix-lsp
+      rustup
+      tree
+      tree-sitter
+      wget
+      yaml-language-server
     ];
 
     sessionVariables = {
