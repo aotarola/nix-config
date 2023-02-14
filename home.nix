@@ -4,6 +4,7 @@
   home = {
 
     packages = with pkgs; [
+      (python310.withPackages (ps: with ps; [ python-lsp-server pytest pipx ] ++ python-lsp-server.optional-dependencies.all))
       btop
       colima
       deno
@@ -12,24 +13,28 @@
       docker-compose
       elmPackages.elm-json
       elmPackages.elm-language-server
+      erlang
       exercism
       fd
       gh
       git-open
+      gleam
       jq
       kubectl
       less
       lsd
       ncdu
       neovim
+      nodePackages.bash-language-server
       nodePackages.fixjson
       nodePackages_latest.vscode-langservers-extracted
       nodejs-16_x
-      pyright
-      python3
-      python310Packages.pipx
       rnix-lsp
+      rubyPackages_3_1.rubocop
+      rubyPackages_3_1.solargraph
+      ruby_3_1
       rustup
+      taplo
       tree
       tree-sitter
       wget
