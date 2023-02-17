@@ -11,8 +11,11 @@
       difftastic
       docker
       docker-compose
+      elmPackages.elm
+      elmPackages.elm-format
       elmPackages.elm-json
       elmPackages.elm-language-server
+      elmPackages.elm-test
       erlang
       exercism
       fd
