@@ -11,6 +11,7 @@
       difftastic
       docker
       docker-compose
+      efm-langserver
       elmPackages.elm
       elmPackages.elm-format
       elmPackages.elm-json
@@ -30,6 +31,10 @@
       neovim
       nodePackages.bash-language-server
       nodePackages.fixjson
+      nodePackages.prettier
+      nodePackages.serverless
+      nodePackages.typescript-language-server
+      nodePackages.yarn
       nodePackages_latest.vscode-langservers-extracted
       nodejs-16_x
       rnix-lsp
