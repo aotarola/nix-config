@@ -32,7 +32,6 @@
       nodePackages.bash-language-server
       nodePackages.fixjson
       nodePackages.prettier
-      nodePackages.prisma
       nodePackages.serverless
       nodePackages.typescript-language-server
       nodePackages.yarn
