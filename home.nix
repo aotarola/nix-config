@@ -32,6 +32,7 @@
       nodePackages.bash-language-server
       nodePackages.fixjson
       nodePackages.prettier
+      nodePackages."@prisma/language-server"
       nodePackages.serverless
       nodePackages.typescript-language-server
       nodePackages.yarn
