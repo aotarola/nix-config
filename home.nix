@@ -33,6 +33,7 @@
       nodePackages.fixjson
       nodePackages.prettier
       nodePackages."@prisma/language-server"
+      nodePackages.graphql-language-service-cli
       nodePackages.serverless
       nodePackages.typescript-language-server
       nodePackages.yarn
