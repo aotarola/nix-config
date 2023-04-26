@@ -29,11 +29,13 @@
       lsd
       ncdu
       neovim
+      nodePackages."@prisma/language-server"
       nodePackages.bash-language-server
       nodePackages.fixjson
-      nodePackages.prettier
-      nodePackages."@prisma/language-server"
+      nodePackages.pnpm
       nodePackages.graphql-language-service-cli
+      nodePackages.prettier
+      nodePackages.yaml-language-server
       nodePackages.serverless
       nodePackages.typescript-language-server
       nodePackages.yarn
@@ -48,12 +50,12 @@
       tree
       tree-sitter
       wget
-      yaml-language-server
     ];
 
     sessionVariables = {
       EDITOR = "hx";
       VISUAL = "hx";
+      DOCKER_HOST = "unix://$HOME/.colima/docker.sock";
     };
 
     sessionPath = [
@@ -137,6 +139,9 @@
       };
       color = {
         ui = true;
+      };
+      push = {
+        autoSetupRemote = true;
       };
       pull = {
         rebase = true;
