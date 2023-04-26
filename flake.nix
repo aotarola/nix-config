@@ -30,6 +30,6 @@
     in
     {
       homeConfigurations."${username}@ivory" = home-manager.lib.homeManagerConfiguration (configFor "aarch64-darwin");
-      homeConfigurations."${username}@ebony" = home-manager.lib.homeManagerConfiguration (configFor "x86_64-darwin");
+      homeConfigurations."${username}@rebellion" = home-manager.lib.homeManagerConfiguration (configFor "aarch64-darwin");
     };
 }
