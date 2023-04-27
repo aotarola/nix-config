@@ -9,6 +9,7 @@
       colima
       deno
       difftastic
+      difftastic
       docker
       docker-compose
       efm-langserver
@@ -32,12 +33,12 @@
       nodePackages."@prisma/language-server"
       nodePackages.bash-language-server
       nodePackages.fixjson
-      nodePackages.pnpm
       nodePackages.graphql-language-service-cli
+      nodePackages.pnpm
       nodePackages.prettier
-      nodePackages.yaml-language-server
       nodePackages.serverless
       nodePackages.typescript-language-server
+      nodePackages.yaml-language-server
       nodePackages.yarn
       nodePackages_latest.vscode-langservers-extracted
       nodejs-16_x
@@ -134,8 +135,18 @@
       prettylog = "...";
     };
     extraConfig = {
+      user = {
+        name = "Andres Otarola";
+      };
       core = {
         editor = "hx";
+        excludesfile = "~/.gitignore";
+      };
+      alias = {
+        amend = "commit -a --amend --no-edit";
+        r = "remote --verbose";
+        repo = "open";
+        dft = "difftool";
       };
       color = {
         ui = true;
@@ -159,9 +170,6 @@
       difftool = {
         cmd = "difft \"$LOCAL\" \"$REMOTE\"";
         prompt = false;
-      };
-      alias = {
-        repo = "open";
       };
       init = {
         defaultBranch = "main";
