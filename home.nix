@@ -129,15 +129,12 @@
 
   programs.git = {
     enable = true;
-    userName = "aotarola";
+    userName = "Andres Otarola";
     userEmail = "andres@otarola.me";
     aliases = {
       prettylog = "...";
     };
     extraConfig = {
-      user = {
-        name = "Andres Otarola";
-      };
       core = {
         editor = "hx";
         excludesfile = "~/.gitignore";
