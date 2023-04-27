@@ -68,7 +68,7 @@
       {
         h = "hx";
         gs = "git status";
-        gd = "git dft";
+        gd = "git diff";
         ga = "git add .";
         gca = "git commit -v -a";
         gc = "git commit";
@@ -134,6 +134,9 @@
     aliases = {
       prettylog = "...";
     };
+    difftastic = {
+      enable = true;
+    };
     extraConfig = {
       core = {
         editor = "hx";
@@ -156,17 +159,6 @@
       };
       fetch = {
         prune = true;
-      };
-      pager = {
-        difftool = true;
-      };
-      diff = {
-        colorMoved = "zebra";
-        tool = "difftastic";
-      };
-      difftool = {
-        cmd = "difft \"$LOCAL\" \"$REMOTE\"";
-        prompt = false;
       };
       init = {
         defaultBranch = "main";
