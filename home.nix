@@ -37,6 +37,7 @@
       nodePackages.graphql-language-service-cli
       nodePackages.pnpm
       nodePackages.prettier
+      nodePackages.eslint_d
       nodePackages.pyright
       nodePackages.serverless
       nodePackages.typescript-language-server
