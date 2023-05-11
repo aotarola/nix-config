@@ -42,6 +42,7 @@
       nodePackages.typescript-language-server
       nodePackages.yaml-language-server
       nodePackages.yarn
+      nodePackages.mermaid-cli
       nodePackages_latest.vscode-langservers-extracted
       nodejs-16_x
       rnix-lsp
