@@ -4,9 +4,10 @@
   home = {
 
     packages = with pkgs; [
+
       (python310.withPackages (ps: with ps; [ python-lsp-server pytest pipx ] ++ python-lsp-server.optional-dependencies.all))
-      btop
       black
+      btop
       colima
       deno
       difftastic
@@ -33,17 +34,17 @@
       neovim
       nodePackages."@prisma/language-server"
       nodePackages.bash-language-server
+      nodePackages.eslint_d
       nodePackages.fixjson
       nodePackages.graphql-language-service-cli
+      nodePackages.mermaid-cli
       nodePackages.pnpm
       nodePackages.prettier
-      nodePackages.eslint_d
       nodePackages.pyright
       nodePackages.serverless
       nodePackages.typescript-language-server
       nodePackages.yaml-language-server
       nodePackages.yarn
-      nodePackages.mermaid-cli
       nodePackages_latest.vscode-langservers-extracted
       nodejs-16_x
       rnix-lsp
