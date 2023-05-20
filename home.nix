@@ -45,6 +45,7 @@
       nodePackages.yarn
       nodePackages_latest.vscode-langservers-extracted
       nodejs-16_x
+      pipenv
       rnix-lsp
       rubyPackages_3_1.rubocop
       rubyPackages_3_1.solargraph
@@ -53,6 +54,7 @@
       taplo
       tree
       tree-sitter
+      vscode-extensions.github.copilot
       wget
     ];
 
