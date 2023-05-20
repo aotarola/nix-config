@@ -24,6 +24,7 @@
       gh
       git-open
       gleam
+      haskellPackages.dhall
       jq
       kubectl
       less
@@ -54,7 +55,6 @@
       taplo
       tree
       tree-sitter
-      vscode-extensions.github.copilot
       wget
     ];
 
