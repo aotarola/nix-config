@@ -25,6 +25,8 @@
       git-open
       gleam
       haskellPackages.dhall
+      haskellPackages.dhall-lsp-server
+      haskellPackages.dhall-toml
       jq
       kubectl
       less
