@@ -28,6 +28,13 @@ let indent
     : Indent
     = { tab-width = 2, unit = "  " }
 
+let withFormat =
+      λ(lsp : LSP) → lsp ⫽ { only-features = lsp.only-features # [ "format" ] }
+
+let excludeFormat =
+      λ(lsp : LSP) →
+        lsp ⫽ { except-features = lsp.except-features # [ "format" ] }
+
 let languages
     : List Language
     = [ { name = "dhall"
@@ -50,12 +57,8 @@ let languages
         , indent
         , language-servers =
           [ lsp "copilot"
-          , lspWithOpts
-              "toml-lsp"
-              { include = [] : List Text, exclude = [ "format" ] }
-          , lspWithOpts
-              "toml-formatter"
-              { include = [ "format" ] : List Text, exclude = [] : List Text }
+          , excludeFormat (lsp "toml-lsp")
+          , withFormat (lsp "toml-formatter")
           ]
         }
       , { name = "yaml"
@@ -67,13 +70,7 @@ let languages
         , comment-token = "#"
         , indent
         , language-servers =
-          [ lspWithOpts
-              "yaml-lsp"
-              { include = [] : List Text, exclude = [ "format" ] }
-          , lspWithOpts
-              "yaml-formatter"
-              { include = [ "format" ] : List Text, exclude = [] : List Text }
-          ]
+          [ excludeFormat (lsp "yaml-lsp"), withFormat (lsp "yaml-formatter") ]
         }
       ]
 
