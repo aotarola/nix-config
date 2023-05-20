@@ -15,13 +15,14 @@ let Language =
       , indent : Indent
       }
 
-let lsp
-    : ∀(name : Text) → LSP
-    = λ(name : Text) →
-        { name
-        , except-features = [] : List Text
-        , only-features = [] : List Text
-        }
+let lspWithOpts =
+      λ(name : Text) →
+      λ(opts : { include : List Text, exclude : List Text }) →
+        { name, except-features = opts.include, only-features = opts.exclude }
+
+let lsp =
+      λ(name : Text) →
+        lspWithOpts name { include = [] : List Text, exclude = [] : List Text }
 
 let standardIndent
     : Indent
@@ -36,14 +37,7 @@ let languages
         , auto-format = True
         , roots = [] : List Text
         , comment-token = "--"
-        , language-servers =
-          [ { name = "something"
-            , except-features = [ "other" ]
-            , only-features = [ "boo" ]
-            }
-          , lsp "dhall-lsp-server"
-          , lsp "copilot"
-          ]
+        , language-servers = [ lsp "dhall-lsp-server", lsp "copilot" ]
         , indent = standardIndent
         }
       , { name = "toml"
@@ -53,7 +47,15 @@ let languages
         , auto-format = True
         , roots = [] : List Text
         , comment-token = "#"
-        , language-servers = [ lsp "toml" ]
+        , language-servers =
+          [ lsp "copilot"
+          , lspWithOpts
+              "toml-lsp"
+              { include = [] : List Text, exclude = [ "format" ] }
+          , lspWithOpts
+              "toml-formatter"
+              { include = [ "format" ] : List Text, exclude = [] : List Text }
+          ]
         , indent = standardIndent
         }
       ]
