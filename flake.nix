@@ -9,13 +9,18 @@
     };
   };
 
+
   outputs = { home-manager, nixpkgs, ... }:
     let
       username = "aotarola";
     in
     let
       configFor = system: {
-        pkgs = nixpkgs.legacyPackages.${system};
+        # pkgs = nixpkgs.legacyPackages.${system};
+        pkgs = import nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+        };
         modules = [
           ./home.nix
           {

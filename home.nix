@@ -189,5 +189,4 @@
 
   # Example of custom arbitrary dotfile
   xdg.configFile."foo".source = ./dotfiles/foo/config.yaml;
-  xdg.configFile."nixpkgs/config.nix".source = ./nixpkgs-config.nix;
 }
