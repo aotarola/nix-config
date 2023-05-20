@@ -24,7 +24,7 @@ let lsp =
       λ(name : Text) →
         lspWithOpts name { include = [] : List Text, exclude = [] : List Text }
 
-let standardIndent
+let indent
     : Indent
     = { tab-width = 2, unit = "  " }
 
@@ -37,8 +37,8 @@ let languages
         , auto-format = True
         , roots = [] : List Text
         , comment-token = "--"
+        , indent
         , language-servers = [ lsp "dhall-lsp-server", lsp "copilot" ]
-        , indent = standardIndent
         }
       , { name = "toml"
         , scope = "source.toml"
@@ -47,6 +47,7 @@ let languages
         , auto-format = True
         , roots = [] : List Text
         , comment-token = "#"
+        , indent
         , language-servers =
           [ lsp "copilot"
           , lspWithOpts
@@ -56,7 +57,23 @@ let languages
               "toml-formatter"
               { include = [ "format" ] : List Text, exclude = [] : List Text }
           ]
-        , indent = standardIndent
+        }
+      , { name = "yaml"
+        , scope = "source.yaml"
+        , injection-regex = "yml|yaml"
+        , file-types = [ "yml", "yaml" ]
+        , auto-format = True
+        , roots = [] : List Text
+        , comment-token = "#"
+        , indent
+        , language-servers =
+          [ lspWithOpts
+              "yaml-lsp"
+              { include = [] : List Text, exclude = [ "format" ] }
+          , lspWithOpts
+              "yaml-formatter"
+              { include = [ "format" ] : List Text, exclude = [] : List Text }
+          ]
         }
       ]
 
