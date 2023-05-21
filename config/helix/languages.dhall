@@ -10,6 +10,7 @@ let Language =
       , file-types : List Text
       , auto-format : Bool
       , roots : List Text
+      , shebangs : List Text
       , comment-token : Text
       , language-servers : List LSP
       , indent : Indent
@@ -24,16 +25,37 @@ let lsp =
       λ(name : Text) →
         lspWithOpts name { include = [] : List Text, exclude = [] : List Text }
 
-let indent
+let indent2
     : Indent
     = { tab-width = 2, unit = "  " }
+
+let indent4
+    : Indent
+    = { tab-width = 4, unit = "    " }
 
 let withFormat =
       λ(lsp : LSP) → lsp ⫽ { only-features = lsp.only-features # [ "format" ] }
 
+let withDiagnostics =
+      λ(lsp : LSP) →
+        lsp ⫽ { only-features = lsp.only-features # [ "diagnostics" ] }
+
 let excludeFormat =
       λ(lsp : LSP) →
         lsp ⫽ { except-features = lsp.except-features # [ "format" ] }
+
+let excludeDiagnostics =
+      λ(lsp : LSP) →
+        lsp ⫽ { except-features = lsp.except-features # [ "diagnostics" ] }
+
+let emptyTextList = [] : List Text
+
+let jsTSLspPack =
+      [ excludeFormat (lsp "typescript")
+      , withFormat (lsp "eslint-formatter")
+      , lsp "vscode-eslint"
+      , lsp "copilot"
+      ]
 
 let languages
     : List Language
@@ -42,22 +64,24 @@ let languages
         , injection-regex = "dhall"
         , file-types = [ "dhall" ]
         , auto-format = True
-        , roots = [] : List Text
+        , roots = emptyTextList
+        , shebangs = emptyTextList
         , comment-token = "--"
-        , indent
-        , language-servers = [ lsp "dhall-lsp-server", lsp "copilot" ]
+        , indent = indent2
+        , language-servers = [ lsp "dhall", lsp "copilot" ]
         }
       , { name = "toml"
         , scope = "source.toml"
         , injection-regex = "toml"
         , file-types = [ "toml", "poetry.lock" ]
         , auto-format = True
-        , roots = [] : List Text
+        , roots = emptyTextList
+        , shebangs = emptyTextList
         , comment-token = "#"
-        , indent
+        , indent = indent2
         , language-servers =
           [ lsp "copilot"
-          , excludeFormat (lsp "toml-lsp")
+          , excludeFormat (lsp "toml")
           , withFormat (lsp "toml-formatter")
           ]
         }
@@ -66,11 +90,155 @@ let languages
         , injection-regex = "yml|yaml"
         , file-types = [ "yml", "yaml" ]
         , auto-format = True
-        , roots = [] : List Text
+        , roots = emptyTextList
+        , shebangs = emptyTextList
         , comment-token = "#"
-        , indent
+        , indent = indent2
         , language-servers =
-          [ excludeFormat (lsp "yaml-lsp"), withFormat (lsp "yaml-formatter") ]
+          [ excludeFormat (lsp "yaml"), withFormat (lsp "yaml-formatter") ]
+        }
+      , { name = "prisma"
+        , scope = "source.prisma"
+        , injection-regex = "prisma"
+        , file-types = [ "prisma" ]
+        , auto-format = True
+        , roots = [ "package.json" ]
+        , shebangs = emptyTextList
+        , comment-token = "//"
+        , indent = indent2
+        , language-servers = [ lsp "prisma" ]
+        }
+      , { name = "graphql"
+        , scope = "source.graphql"
+        , injection-regex = "graphql"
+        , file-types = [ "gql", "graphql", "graphqls" ]
+        , auto-format = True
+        , roots = emptyTextList
+        , shebangs = emptyTextList
+        , comment-token = "#"
+        , indent = indent2
+        , language-servers = [ lsp "graphql" ]
+        }
+      , { name = "elm"
+        , scope = "source.elm"
+        , injection-regex = "elm"
+        , file-types = [ "elm" ]
+        , auto-format = True
+        , roots = [ "elm.json" ]
+        , shebangs = emptyTextList
+        , comment-token = "--"
+        , indent = indent4
+        , language-servers = [ lsp "elm" ]
+        }
+      , { name = "nix"
+        , scope = "source.nix"
+        , injection-regex = "nix"
+        , file-types = [ "nix" ]
+        , auto-format = True
+        , roots = emptyTextList
+        , shebangs = emptyTextList
+        , comment-token = "#"
+        , indent = indent2
+        , language-servers = [ lsp "nix" ]
+        }
+      , { name = "html"
+        , scope = "text.html.basic"
+        , injection-regex = "html"
+        , file-types = [ "html" ]
+        , auto-format = True
+        , roots = emptyTextList
+        , shebangs = emptyTextList
+        , comment-token = ""
+        , indent = indent2
+        , language-servers = [ lsp "html" ]
+        }
+      , { name = "json"
+        , scope = "source.json"
+        , injection-regex = "json"
+        , file-types = [ "json", "jsonc", "arb", "ipynb", "geojson" ]
+        , auto-format = True
+        , roots = emptyTextList
+        , shebangs = emptyTextList
+        , comment-token = ""
+        , indent = indent2
+        , language-servers =
+          [ excludeFormat (lsp "json"), withFormat (lsp "json-formatter") ]
+        }
+      , { name = "python"
+        , scope = "source.json"
+        , injection-regex = "python"
+        , file-types =
+          [ "py"
+          , "pyi"
+          , "py3"
+          , "pyw"
+          , "ptl"
+          , ".pythonstartup"
+          , ".pythonrc"
+          , "SConstruct"
+          ]
+        , auto-format = True
+        , roots = emptyTextList
+        , shebangs = [ "python" ]
+        , comment-token = "#"
+        , indent = indent4
+        , language-servers =
+          [ excludeFormat (lsp "python")
+          , withFormat (lsp "python-formatter")
+          , lsp "copilot"
+          ]
+        }
+      , { name = "markdown"
+        , scope = "source.md"
+        , injection-regex = "md|markdown"
+        , file-types = [ "md", "markdown", "PULLREQ_EDITMSG" ]
+        , auto-format = True
+        , roots = [ ".marksman.toml" ]
+        , shebangs = emptyTextList
+        , comment-token = ""
+        , indent = indent2
+        , language-servers =
+          [ excludeFormat (lsp "markdown")
+          , withFormat (lsp "markdown-formatter")
+          , withDiagnostics (lsp "markdown-linter")
+          ]
+        }
+      , { name = "javascript"
+        , scope = "source.js"
+        , injection-regex = "js|javascript"
+        , file-types = [ "js", "mjs", "cjs" ]
+        , auto-format = True
+        , roots = emptyTextList
+        , shebangs = [ "node" ]
+        , comment-token = "//"
+        , indent = indent2
+        , language-servers = jsTSLspPack
+        }
+      , { name = "typescript"
+        , scope = "source.ts"
+        , injection-regex = "ts|typescript"
+        , file-types = [ "ts", "mts", "cts" ]
+        , auto-format = True
+        , roots = emptyTextList
+        , shebangs = emptyTextList
+        , comment-token = "//"
+        , indent = indent2
+        , language-servers = jsTSLspPack
+        }
+      , { name = "dockerfile"
+        , scope = "source.dockerfile"
+        , injection-regex = "docker|dockerfile"
+        , file-types = [ "Dockerfile", "Containerfile" ]
+        , auto-format = True
+        , roots =
+          [ "Dockerfile", "dockerfile", "Containerfile", "containerfile" ]
+        , shebangs = emptyTextList
+        , comment-token = "#"
+        , indent = indent2
+        , language-servers =
+          [ excludeDiagnostics (lsp "docker")
+          , withDiagnostics (lsp "hadolint-linter")
+          ]
         }
       ]
 
