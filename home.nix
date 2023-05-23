@@ -5,6 +5,7 @@
 
     packages = with pkgs; [
       (python310.withPackages (ps: with ps; [ python-lsp-server pytest pipx ] ++ python-lsp-server.optional-dependencies.all))
+      awscli2
       black
       btop
       colima
