@@ -4,7 +4,7 @@ let eslint_d =
       , lintStdin = True
       }
 
-let eslint =
+let eslint-linter =
       { command = "efm-langserver"
       , config.languages
         =
@@ -15,4 +15,4 @@ let eslint =
         }
       }
 
-in  { eslint }
+in  { eslint-linter }
