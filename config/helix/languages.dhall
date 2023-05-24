@@ -242,4 +242,19 @@ let languages
         }
       ]
 
-in  { languages }
+in  { language-server = ./lsps/c.dhall
+    , language-server = ./lsps/copilot.dhall
+    , language-server = ./lsps/dockerfile.dhall
+    , language-server = ./lsps/elm.dhall
+    , language-server = ./lsps/eslint.dhall
+    , language-server = ./lsps/graphql.dhall
+    , language-server = ./lsps/html.dhall
+    , language-server = ./lsps/json.dhall
+    , language-server = ./lsps/markdown.dhall
+    , language-server = ./lsps/prisma.dhall
+    , language-server = ./lsps/python.dhall
+    , language-server = ./lsps/toml.dhall
+    , language-server = ./lsps/typescript-deno.dhall
+    , language-server = ./lsps/yaml.dhall
+    , languages
+    }
