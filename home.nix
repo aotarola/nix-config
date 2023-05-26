@@ -74,25 +74,26 @@
 
     shellAliases =
       {
-        h = "hx";
-        gs = "git status";
-        gd = "git diff";
+        c = "cd ~/.config/nixpkgs";
+        cdr = "alias gitroot='cd $(git rev-parse --show-toplevel)'";
         ga = "git add .";
-        gca = "git commit -v -a";
         gc = "git commit";
+        gca = "git commit -v -a";
         gco = "git checkout";
-        ggpush = "git push";
+        gd = "git diff";
         ggpull = "git pull";
+        ggpush = "git push";
+        gs = "git status";
+        gwa = "git wf abort";
+        gwd = "git wf done";
+        gwp = "git wf pr";
+        gws = "git wf start";
+        h = "hx";
         hms = "nix profile list | { grep 'home-manager-path$' || test $? = 1; } | awk -F ' ' '{ print $4 }' | cut -d ' ' -f 4 | xargs -t $DRY_RUN_CMD nix profile remove $VERBOSE_ARG && \"$(nix path-info ~/.config/nixpkgs#homeConfigurations.$USER@$(hostname -s).activationPackage)\"/activate";
         k = "kubectl";
         ls = "lsd";
         nci = "npm ci";
         ns = "npm start";
-        c = "cd ~/.config/nixpkgs";
-        gws = "git wf start";
-        gwd = "git wf done";
-        gwp = "git wf pr";
-        gwa = "git wf abort";
       };
   };
 
@@ -192,4 +193,5 @@
 
   # Example of custom arbitrary dotfile
   xdg.configFile."foo".source = ./dotfiles/foo/config.yaml;
+  xdg.configHome.source = ./config/helix;
 }
