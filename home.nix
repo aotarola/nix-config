@@ -1,65 +1,70 @@
-{ config, pkgs, lib, ... }:
+{ username, config, pkgs, lib, ... }:
 
 {
   home = {
+    inherit username;
 
-    packages = with pkgs; [
-      (python310.withPackages (ps: with ps; [ python-lsp-server pytest pipx ] ++ python-lsp-server.optional-dependencies.all))
-      awscli2
-      black
-      btop
-      colima
-      deno
-      difftastic
-      docker
-      docker-compose
-      efm-langserver
-      elmPackages.elm
-      elmPackages.elm-format
-      elmPackages.elm-json
-      elmPackages.elm-language-server
-      elmPackages.elm-test
-      erlang
-      exercism
-      fd
-      gh
-      git-open
-      gleam
-      haskellPackages.dhall
-      haskellPackages.dhall-lsp-server
-      haskellPackages.dhall-toml
-      jq
-      kubectl
-      less
-      lsd
-      ncdu
-      neovim
-      nodePackages."@prisma/language-server"
-      nodePackages.bash-language-server
-      nodePackages.eslint_d
-      nodePackages.fixjson
-      nodePackages.graphql-language-service-cli
-      nodePackages.mermaid-cli
-      nodePackages.pnpm
-      nodePackages.prettier
-      nodePackages.pyright
-      nodePackages.serverless
-      nodePackages.typescript-language-server
-      nodePackages.yaml-language-server
-      nodePackages.yarn
-      nodePackages_latest.vscode-langservers-extracted
-      nodejs-16_x
-      pipenv
-      rnix-lsp
-      rubyPackages_3_1.rubocop
-      rubyPackages_3_1.solargraph
-      ruby_3_1
-      rustup
-      taplo
-      tree
-      tree-sitter
-      wget
-    ];
+    homeDirectory = "/home/" + username;
+    stateVersion = "23.11";
+
+    packages = with pkgs;
+      [
+        (python310.withPackages (ps: with ps; [ python-lsp-server pytest pipx ] ++ python-lsp-server.optional-dependencies.all))
+        awscli2
+        black
+        btop
+        colima
+        deno
+        difftastic
+        docker
+        docker-compose
+        efm-langserver
+        elmPackages.elm
+        elmPackages.elm-format
+        elmPackages.elm-json
+        elmPackages.elm-language-server
+        elmPackages.elm-test
+        erlang
+        exercism
+        fd
+        gh
+        git-open
+        gleam
+        haskellPackages.dhall
+        haskellPackages.dhall-lsp-server
+        haskellPackages.dhall-toml
+        jq
+        kubectl
+        less
+        lsd
+        ncdu
+        neovim
+        nodePackages."@prisma/language-server"
+        nodePackages.bash-language-server
+        nodePackages.eslint_d
+        nodePackages.fixjson
+        nodePackages.graphql-language-service-cli
+        nodePackages.mermaid-cli
+        nodePackages.pnpm
+        nodePackages.prettier
+        nodePackages.pyright
+        nodePackages.serverless
+        nodePackages.typescript-language-server
+        nodePackages.yaml-language-server
+        nodePackages.yarn
+        nodePackages_latest.vscode-langservers-extracted
+        nodejs-16_x
+        pipenv
+        rnix-lsp
+        rubyPackages_3_1.rubocop
+        rubyPackages_3_1.solargraph
+        ruby_3_1
+        # rustup
+        taplo
+        tree
+        tree-sitter
+        wget
+      ];
 
     sessionVariables = {
       EDITOR = "hx";
@@ -96,6 +101,8 @@
         ns = "npm start";
       };
   };
+
+  programs.helix = import ./programs/helix.nix;
 
   programs.home-manager.enable = true;
 
@@ -190,8 +197,4 @@
       ".marksman.toml"
     ];
   };
-
-  # Example of custom arbitrary dotfile
-  xdg.configFile."foo".source = ./dotfiles/foo/config.yaml;
-  xdg.configHome.source = ./config/helix;
 }

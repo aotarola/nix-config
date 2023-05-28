@@ -1,40 +1,43 @@
 {
-  description = "My Home Manager flake";
+  description = "My system configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    helix-master.url = "github:aotarola/helix/custom";
+    rust-overlay.url = "github:oxalica/rust-overlay";
+    home-manager.url = "github:nix-community/home-manager";
+    utils.url = "github:numtide/flake-utils";
+    nci.url = "github:yusdacra/nix-cargo-integration";
   };
 
+  outputs =
+    { self, utils, home-manager, nixpkgs, helix-master, nci, rust-overlay }:
+    utils.lib.eachDefaultSystem (system:
+    let
+      helixOverlay = import overlays/helix.nix helix-master system;
+      # poshOverlay = final: prev: {
 
-  outputs = { home-manager, nixpkgs, ... }:
-    let
-      username = "aotarola";
-    in
-    let
-      configFor = system: {
-        # pkgs = nixpkgs.legacyPackages.${system};
-        pkgs = import nixpkgs {
-          inherit system;
-          config.allowUnfree = true;
-        };
-        modules = [
-          ./home.nix
-          {
-            home = {
-              username = username;
-              homeDirectory = /Users/${username};
-              stateVersion = "22.11";
-            };
-          }
-        ];
+      # };
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+        config.allowUnfreePredicate = (_: true);
+        overlays = [ helixOverlay (import rust-overlay) ];
       };
+      pcConfiguration = name:
+        home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+
+          extraSpecialArgs = { username = name; };
+          modules = [ ./home.nix ];
+
+        };
+
     in
     {
-      homeConfigurations."${username}@ivory" = home-manager.lib.homeManagerConfiguration (configFor "aarch64-darwin");
-      homeConfigurations."${username}@rebellion" = home-manager.lib.homeManagerConfiguration (configFor "aarch64-darwin");
-    };
+      packages = {
+        default = home-manager.defaultPackage.${system};
+        homeConfigurations.aotarola = pcConfiguration "aotarola";
+      };
+    });
 }
