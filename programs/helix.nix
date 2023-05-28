@@ -84,6 +84,7 @@ let
   languages.language = [
     { name = "nix"; auto-format = true; language-servers = [ "rnix" ]; }
     { name = "rust"; auto-format = true; file-types = [ "lalrpop" "rs" ]; language-servers = [ "rust-analyzer" ]; }
+    { name = "sql"; auto-format = true; formatter.command = "pg_format"; }
   ];
 
 in

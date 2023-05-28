@@ -10,14 +10,13 @@
     packages = with pkgs;
       [
         (python310.withPackages (ps: with ps; [ python-lsp-server pytest pipx ] ++ python-lsp-server.optional-dependencies.all))
+        (rust-bin.stable.latest.default.override { extensions = [ "cargo" "rust-analysis" "rust-src" "rust-std" "rustc" "rust-analyzer" ]; })
         awscli2
-        nixpkgs-fmt
         black
         btop
         colima
         deno
         difftastic
-        rnix-lsp
         docker
         docker-compose
         efm-langserver
@@ -38,7 +37,6 @@
         lsd
         ncdu
         neovim
-        nil
         nodePackages."@prisma/language-server"
         nodePackages.bash-language-server
         nodePackages.eslint_d
@@ -54,13 +52,12 @@
         nodePackages.yarn
         nodePackages_latest.vscode-langservers-extracted
         nodejs-18_x
+        pgformatter
         pipenv
+        rnix-lsp
         rubyPackages_3_1.rubocop
         rubyPackages_3_1.solargraph
         ruby_3_1
-        (rust-bin.stable.latest.default.override {
-          extensions = [ "cargo" "rust-analysis" "rust-src" "rust-std" "rustc" "rust-analyzer" ];
-        })
         taplo
         tree
         tree-sitter
