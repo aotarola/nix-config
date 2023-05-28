@@ -316,6 +316,11 @@
       "injection-regex" = "dhall";
       "language-servers" = [
         { "except-features" = []; "name" = "dhall"; "only-features" = []; }
+        {
+          "except-features" = [];
+          "name" = "dhall-formatter";
+          "only-features" = [ "format" ];
+          }
         { "except-features" = []; "name" = "copilot"; "only-features" = []; }
         ];
       "name" = "dhall";
