@@ -5,7 +5,7 @@
     inherit username;
 
     homeDirectory = "/home/" + username;
-    stateVersion = "23.11";
+    stateVersion = "23.05";
 
     packages = with pkgs;
       [
@@ -53,7 +53,7 @@
         nodePackages.yaml-language-server
         nodePackages.yarn
         nodePackages_latest.vscode-langservers-extracted
-        nodejs-16_x
+        nodejs-18_x
         pipenv
         rnix-lsp
         rubyPackages_3_1.rubocop

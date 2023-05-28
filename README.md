@@ -1,16 +1,8 @@
 # Nix config
 
-Home configuration for all my Linux and MacOS hosts using nix pkgs.
+Home configuration for all my programs
 
-This configuration builds [home-manager][hm] per architecture with a config that uses my
-hostnames as config entries:
-
-1. `aotarola@ivory`: points to my Mac Mini M1
-1. `aotarola@ebony`: points to my Macbook Air Intel
-
-Feel free to fork and customize it.
-
-[hm]: https://github.com/nix-community/home-manager
+It has my username hardcoded, but you can fork and change it to yours
 
 ## Installation
 
@@ -32,16 +24,10 @@ Feel free to fork and customize it.
     ```sh
     git clone git@github.com:aotarola/nix-config.git ~/.config/nixpkgs
     ```
-1. Build it using flakes
+1. Build it
 
     ```sh
-    nix build --no-link ~/.config/nixpkgs#homeConfigurations.$USER@$(hostname -s).activationPackage
-    ```
-
-1. Activate it
-
-    ```sh
-    "$(nix path-info ~/.config/nixpkgs#homeConfigurations.$USER@$(hostname -s).activationPackage)"/activate
+    ./switch.sh
     ```
 
 ## Usage
