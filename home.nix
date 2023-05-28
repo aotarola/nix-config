@@ -19,6 +19,7 @@
         difftastic
         docker
         docker-compose
+        hadolint
         efm-langserver
         elmPackages.elm
         elmPackages.elm-format
@@ -42,6 +43,7 @@
         nodePackages.eslint_d
         nodePackages.fixjson
         nodePackages.graphql-language-service-cli
+        nodePackages.markdownlint-cli
         nodePackages.mermaid-cli
         nodePackages.pnpm
         nodePackages.prettier

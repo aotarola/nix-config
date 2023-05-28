@@ -193,6 +193,32 @@ let
           args = [ "--stdio" ];
         };
 
+      deno = {
+        command = "deno";
+        args = [ "lsp" ];
+        config = {
+          lint = true;
+          enable = true;
+          unstable = true;
+        };
+      };
+
+      html = {
+        command = "vscode-html-language-server";
+        args = [ "--stdio" ];
+      };
+
+      markdown = {
+        command = "vscode-html-language-server";
+        args = [ "--stdio" ];
+      };
+
+      dockerfile =
+        {
+          command = "docker-langserver";
+          args = [ "--stdio" ];
+        };
+
       # Formatters
 
       json-formatter = {
@@ -220,6 +246,31 @@ let
         };
       };
 
+      html-formatter = {
+        command = "efm-langserver";
+        config = {
+          documentFormatting = true;
+          languages = {
+            html = [{
+              formatCommand = "prettier --parser html";
+              formatStdin = true;
+            }];
+          };
+        };
+      };
+
+      markdown-formatter = {
+        command = "efm-langserver";
+        config = {
+          documentFormatting = true;
+          languages = {
+            markdown = [{
+              formatCommand = "prettier --parser markdown";
+              formatStdin = true;
+            }];
+          };
+        };
+      };
 
       eslint-formatter = {
         command = "efm-langserver";
@@ -241,6 +292,35 @@ let
             javascriptreact = [{
               formatCommand = "eslint_d --stdin --fix-to-stdout --stdin-filename=\${INPUT}";
               formatStdin = true;
+            }];
+          };
+        };
+      };
+
+      # Linters
+
+      markdown-linter = {
+        command = "efm-langserver";
+        config = {
+          languages = {
+            markdown = [{
+              lintCommand = "markdownlint --stdin";
+              lintIgnoreExitCode = true;
+              lintStdin = true;
+            }];
+          };
+        };
+      };
+
+      dockerfile-linter = {
+        command = "efm-langserver";
+        config = {
+          languages = {
+            markdown = [{
+              lintCommand = "hadolint --no-color --ignore DL3018 --ignore DL3008";
+              lintIgnoreExitCode = true;
+              lintStdin = true;
+              lintFormats = [ "%f:%l %m" ];
             }];
           };
         };
@@ -307,6 +387,46 @@ let
         name = "graphql";
         auto-format = true;
         language-servers = [ "graphql" ];
+      }
+      {
+        name = "html";
+        auto-format = true;
+        language-servers = [
+          { name = "html"; except-features = [ "format" ]; }
+          { name = "html-formatter"; only-features = [ "format" ]; }
+        ];
+      }
+      {
+        name = "markdown";
+        auto-format = true;
+        language-servers = [
+          {
+            name = "markdown";
+            except-features = [ "format" ];
+          }
+          {
+            name = "markdown-formatter";
+            only-features = [ "format" ];
+          }
+          {
+            name = "markdown-linter";
+            only-features = [ "diagnostics" ];
+          }
+        ];
+      }
+      {
+        name = "dockerfile";
+        auto-format = true;
+        language-servers = [
+          {
+            name = "dockerfile";
+            except-features = [ "diagnostics" ];
+          }
+          {
+            name = "dockerfile-linter";
+            only-features = [ "diagnostics" ];
+          }
+        ];
       }
     ];
 
