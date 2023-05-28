@@ -32,10 +32,6 @@
         gh
         git-open
         gleam
-        haskellPackages.dhall
-        haskellPackages.dhall-lsp-server
-        haskellPackages.dhall-nix
-        haskellPackages.dhall-toml
         jq
         kubectl
         less
@@ -65,7 +61,8 @@
         taplo
         tree
         tree-sitter
-        wget];
+        wget
+      ];
 
     sessionVariables = {
       EDITOR = "hx";
