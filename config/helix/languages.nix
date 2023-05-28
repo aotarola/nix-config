@@ -205,6 +205,7 @@
           };
         };
       };
+    "nix" = { "command" = "rnix-lsp"; };
     "prisma" = {
       "args" = [ "--stdio" ];
       "command" = "prisma-language-server";
