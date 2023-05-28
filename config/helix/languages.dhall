@@ -242,7 +242,19 @@ let languages
         }
       ]
 
-in  { language-server = ./lsps/c.dhall
+in  {
+      language-server = ./formatters/eslint-formatter.dhall
+    , language-server = ./formatters/html-formatter.dhall
+    , language-server = ./formatters/json-formatter.dhall
+    , language-server = ./formatters/markdown-formatter.dhall
+    , language-server = ./formatters/python-formatter.dhall
+    , language-server = ./formatters/toml-formatter.dhall
+    , language-server = ./formatters/yaml-formatter.dhall
+    , language-server = ./linters/dockerfile-linter.dhall
+    , language-server = ./linters/eslint-linter.dhall
+    , language-server = ./linters/json-linter.dhall
+    , language-server = ./linters/markdown-linter.dhall
+    , language-server = ./lsps/c.dhall
     , language-server = ./lsps/copilot.dhall
     , language-server = ./lsps/dockerfile.dhall
     , language-server = ./lsps/elm.dhall
@@ -251,21 +263,11 @@ in  { language-server = ./lsps/c.dhall
     , language-server = ./lsps/html.dhall
     , language-server = ./lsps/json.dhall
     , language-server = ./lsps/markdown.dhall
+    , language-server = ./lsps/nix.dhall
     , language-server = ./lsps/prisma.dhall
     , language-server = ./lsps/python.dhall
     , language-server = ./lsps/toml.dhall
     , language-server = ./lsps/typescript-deno.dhall
     , language-server = ./lsps/yaml.dhall
-    , language-server = ./linters/eslint-linter.dhall
-    , language-server = ./linters/dockerfile-linter.dhall
-    , language-server = ./linters/json-linter.dhall
-    , language-server = ./linters/markdown-linter.dhall
-    , language-server = ./formatters/eslint-formatter.dhall
-    , language-server = ./formatters/html-formatter.dhall
-    , language-server = ./formatters/json-formatter.dhall
-    , language-server = ./formatters/markdown-formatter.dhall
-    , language-server = ./formatters/python-formatter.dhall
-    , language-server = ./formatters/toml-formatter.dhall
-    , language-server = ./formatters/yaml-formatter.dhall
     , languages
     }
