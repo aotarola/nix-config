@@ -219,6 +219,22 @@ let
           args = [ "--stdio" ];
         };
 
+      python =
+        {
+          command = "pyright-langserver";
+          args = [ "--stdio" ];
+        };
+
+      elm =
+        {
+          command = "elm-language-server";
+          config = {
+            elmLS = {
+              elmReviewDiagnostics = "error";
+            };
+          };
+        };
+
       # Formatters
 
       json-formatter = {
@@ -296,6 +312,20 @@ let
           };
         };
       };
+
+      python-formatter =
+        {
+          command = "efm-langserver";
+          config = {
+            documentFormatting = true;
+            languages = {
+              markdown = [{
+                formatCommand = "black --fast --quiet -";
+                formatStdin = true;
+              }];
+            };
+          };
+        };
 
       # Linters
 
@@ -427,6 +457,26 @@ let
             only-features = [ "diagnostics" ];
           }
         ];
+      }
+      {
+        name = "python";
+        auto-format = true;
+        language-servers = [
+          {
+            name = "python";
+            except-features = [ "format" ];
+          }
+          {
+            name = "python-formatter";
+            only-features = [ "format" ];
+          }
+          "copilot"
+        ];
+      }
+      {
+        name = "elm";
+        auto-format = true;
+        language-servers = [ "elm" ];
       }
     ];
 
