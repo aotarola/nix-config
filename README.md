@@ -35,10 +35,8 @@ It has my username hardcoded, but you can fork and change it to yours
 Everytime a new config change is done, update the system with:
 
 ```sh
-hms	
+./switch.sh
 ```
-
-_NOTE_: The alias _hms_ stands for `home-manager switch` (although it has more options bundled in, you can see them with `alias hms`)
 
 _CAVEAT_: If you are configuring a new host from scratch, you might not have 
 access to git, if that is so, feel free to download a binary for it.

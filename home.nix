@@ -95,7 +95,6 @@
         gwp = "git wf pr";
         gws = "git wf start";
         h = "hx";
-        hms = "nix run . switch -- --flake .";
         k = "kubectl";
         ls = "lsd";
         nci = "npm ci";
