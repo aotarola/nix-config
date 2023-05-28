@@ -128,7 +128,7 @@ let languages
         , shebangs = emptyTextList
         , comment-token = "--"
         , indent = indent4
-        , language-servers = [ lsp "elm" ]
+        , language-servers = [ lsp "elm", withFormat (lsp "dhall-formatter") ]
         }
       , { name = "nix"
         , scope = "source.nix"
@@ -256,6 +256,7 @@ in  {
     , language-server = ./linters/markdown-linter.dhall
     , language-server = ./lsps/c.dhall
     , language-server = ./lsps/copilot.dhall
+    , language-server = ./lsps/dhall.dhall
     , language-server = ./lsps/dockerfile.dhall
     , language-server = ./lsps/elm.dhall
     , language-server = ./lsps/eslint.dhall

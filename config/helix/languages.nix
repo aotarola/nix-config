@@ -5,6 +5,7 @@
       "command" = "ccls";
       };
     "copilot" = { "args" = [ "--stdio" ]; "command" = "copilot"; };
+    "dhall" = { "command" = "dhall-lsp-server"; };
     "dockerfile" = {
       "args" = [ "--stdio" ];
       "command" = "docker-langserver";
@@ -405,6 +406,11 @@
       "injection-regex" = "elm";
       "language-servers" = [
         { "except-features" = []; "name" = "elm"; "only-features" = []; }
+        {
+          "except-features" = [];
+          "name" = "dhall-formatter";
+          "only-features" = [ "format" ];
+          }
         ];
       "name" = "elm";
       "roots" = [ "elm.json" ];

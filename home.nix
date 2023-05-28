@@ -1,4 +1,4 @@
-{ username, config, pkgs, lib, ... }:
+{ username, pkgs, ... }:
 
 {
   home = {
@@ -11,6 +11,7 @@
       [
         (python310.withPackages (ps: with ps; [ python-lsp-server pytest pipx ] ++ python-lsp-server.optional-dependencies.all))
         awscli2
+        nixpkgs-fmt
         black
         btop
         colima

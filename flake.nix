@@ -15,7 +15,7 @@
   };
 
   outputs =
-    { self, utils, home-manager, nixpkgs, helix-master, nci, rust-overlay }:
+    { self, utils, home-manager, nixpkgs, helix-master, rust-overlay }:
     utils.lib.eachDefaultSystem (system:
     let
       helixOverlay = import overlays/helix.nix helix-master system;
