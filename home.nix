@@ -94,7 +94,7 @@
         gwp = "git wf pr";
         gws = "git wf start";
         h = "hx";
-        hms = "nix profile list | { grep 'home-manager-path$' || test $? = 1; } | awk -F ' ' '{ print $4 }' | cut -d ' ' -f 4 | xargs -t $DRY_RUN_CMD nix profile remove $VERBOSE_ARG && \"$(nix path-info ~/.config/nixpkgs#homeConfigurations.$USER@$(hostname -s).activationPackage)\"/activate";
+        hms = "nix run . switch -- --flake .";
         k = "kubectl";
         ls = "lsd";
         nci = "npm ci";
