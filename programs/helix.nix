@@ -1,7 +1,10 @@
 let
   settings = builtins.fromTOML (builtins.readFile ./../config/helix/config.toml);
-in
+  languages = import ../config/helix/languages.nix;
+  in
+
 {
   enable = true;
   inherit settings;
+  inherit languages;
 }

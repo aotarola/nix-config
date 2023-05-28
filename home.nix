@@ -31,6 +31,7 @@
         git-open
         gleam
         haskellPackages.dhall
+        haskellPackages.dhall-nix
         haskellPackages.dhall-lsp-server
         haskellPackages.dhall-toml
         jq
