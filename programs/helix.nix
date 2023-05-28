@@ -319,7 +319,7 @@ let
           config = {
             documentFormatting = true;
             languages = {
-              markdown = [{
+              python = [{
                 formatCommand = "black --fast --quiet -";
                 formatStdin = true;
               }];
