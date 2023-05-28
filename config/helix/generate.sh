@@ -1,1 +1,1 @@
-cat languages.dhall | dhall-to-toml > languages.toml
+cat languages.dhall | dhall-to-nix > languages.nix

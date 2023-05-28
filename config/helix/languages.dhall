@@ -242,8 +242,7 @@ let languages
         }
       ]
 
-in  {
-      language-server = ./formatters/eslint-formatter.dhall
+in  { language-server = ./formatters/eslint-formatter.dhall
     , language-server = ./formatters/html-formatter.dhall
     , language-server = ./formatters/json-formatter.dhall
     , language-server = ./formatters/markdown-formatter.dhall
