@@ -1,3 +1,3 @@
-let nix = { command = "rnix-lsp" }
+let nix = { command = "nil" }
 
 in  { nix }

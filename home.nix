@@ -31,8 +31,8 @@
         git-open
         gleam
         haskellPackages.dhall
-        haskellPackages.dhall-nix
         haskellPackages.dhall-lsp-server
+        haskellPackages.dhall-nix
         haskellPackages.dhall-toml
         jq
         kubectl
@@ -40,6 +40,7 @@
         lsd
         ncdu
         neovim
+        nil
         nodePackages."@prisma/language-server"
         nodePackages.bash-language-server
         nodePackages.eslint_d
@@ -56,16 +57,13 @@
         nodePackages_latest.vscode-langservers-extracted
         nodejs-18_x
         pipenv
-        rnix-lsp
         rubyPackages_3_1.rubocop
         rubyPackages_3_1.solargraph
         ruby_3_1
-        # rustup
         taplo
         tree
         tree-sitter
-        wget
-      ];
+        wget];
 
     sessionVariables = {
       EDITOR = "hx";
