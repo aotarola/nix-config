@@ -246,6 +246,7 @@ let languages
 in  { language-server = ./formatters/eslint-formatter.dhall
     , language-server = ./formatters/html-formatter.dhall
     , language-server = ./formatters/json-formatter.dhall
+    , language-server = ./formatters/dhall-formatter.dhall
     , language-server = ./formatters/markdown-formatter.dhall
     , language-server = ./formatters/python-formatter.dhall
     , language-server = ./formatters/toml-formatter.dhall
