@@ -1,3 +1,2 @@
-let nix = { command = "nil" }
-
+let nix = { command = "rnix" } 
 in  { nix }

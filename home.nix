@@ -17,6 +17,7 @@
         colima
         deno
         difftastic
+        rnix-lsp
         docker
         docker-compose
         efm-langserver
