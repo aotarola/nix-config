@@ -3,15 +3,6 @@ let Indent = { tab-width : Natural, unit : Text }
 let LSP =
       { name : Text, except-features : List Text, only-features : List Text }
 
-
-
-
-      
-
-
-
-      
-
 let Language =
       { name : Text
       , scope : Text
@@ -77,7 +68,8 @@ let languages
         , shebangs = emptyTextList
         , comment-token = "--"
         , indent = indent2
-        , language-servers = [ lsp "dhall", withFormat (lsp "dhall-formatter"), lsp "copilot" ]
+        , language-servers =
+          [ lsp "dhall", withFormat (lsp "dhall-formatter"), lsp "copilot" ]
         }
       , { name = "toml"
         , scope = "source.toml"
