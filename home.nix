@@ -25,6 +25,7 @@
         elmPackages.elm-format
         elmPackages.elm-json
         elmPackages.elm-language-server
+        elmPackages.elm-review
         elmPackages.elm-test
         erlang
         exercism

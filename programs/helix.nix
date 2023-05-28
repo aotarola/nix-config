@@ -229,9 +229,7 @@ let
         {
           command = "elm-language-server";
           config = {
-            elmLS = {
-              elmReviewDiagnostics = "error";
-            };
+            elmReviewDiagnostics = "error";
           };
         };
 
@@ -244,6 +242,7 @@ let
           languages = {
             json = [{
               formatCommand = "fixjson";
+              formatStdin = true;
             }];
           };
         };
