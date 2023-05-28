@@ -58,6 +58,9 @@
         rubyPackages_3_1.rubocop
         rubyPackages_3_1.solargraph
         ruby_3_1
+        (rust-bin.stable.latest.default.override {
+          extensions = [ "cargo" "rust-analysis" "rust-src" "rust-std" "rustc" "rust-analyzer" ];
+        })
         taplo
         tree
         tree-sitter

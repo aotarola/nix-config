@@ -1,5 +1,4 @@
 let
-  # settings = builtins.fromTOML (builtins.readFile ./../config/helix/config.toml);
   settings =
     {
       theme = "catppuccin_mocha";
@@ -10,7 +9,6 @@ let
         mouse = false;
         rulers = [ 80 ];
         bufferline = "multiple";
-
         indent-guides = {
           render = true;
           character = "┊";
@@ -67,18 +65,25 @@ let
 
   languages = {
     language-server = {
-      rnix-lsp = {
+      rnix = {
         command = "rnix-lsp";
+      };
+      rust-analyzer = {
+        config.rust-analyzer = {
+          cargo.loadOutDirsFromCheck = true;
+          checkOnSave.command = "clippy";
+          procMacro.enable = true;
+          lens = { references = true; methodReferences = true; };
+          completion.autoimport.enable = true;
+          experimental.procAttrMacros = true;
+        };
       };
     };
   };
 
   languages.language = [
-    {
-      name = "nix";
-      auto-format = true;
-      language-servers = [ "rnix-lsp" ];
-    }
+    { name = "nix"; auto-format = true; language-servers = [ "rnix" ]; }
+    { name = "rust"; auto-format = true; file-types = [ "lalrpop" "rs" ]; language-servers = [ "rust-analyzer" ]; }
   ];
 
 in
