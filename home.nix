@@ -4,7 +4,7 @@
   home = {
     inherit username;
 
-    homeDirectory = "/home/" + username;
+    homeDirectory = "/Users/" + username;
     stateVersion = "23.05";
 
     packages = with pkgs;

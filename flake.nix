@@ -5,7 +5,11 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     helix-master.url = "github:aotarola/helix/custom";
     rust-overlay.url = "github:oxalica/rust-overlay";
-    home-manager.url = "github:nix-community/home-manager";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     utils.url = "github:numtide/flake-utils";
     nci.url = "github:yusdacra/nix-cargo-integration";
   };
