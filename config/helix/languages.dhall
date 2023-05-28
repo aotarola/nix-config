@@ -69,7 +69,7 @@ let languages
         , comment-token = "--"
         , indent = indent2
         , language-servers =
-          [ lsp "dhall", withFormat (lsp "dhall-formatter"), lsp "copilot" ]
+          [ excludeFormat (lsp "dhall"), withFormat (lsp "dhall-formatter"), lsp "copilot" ]
         }
       , { name = "toml"
         , scope = "source.toml"

@@ -6,6 +6,17 @@
       };
     "copilot" = { "args" = [ "--stdio" ]; "command" = "copilot"; };
     "dhall" = { "command" = "dhall-lsp-server"; };
+    "dhall-formatter" = {
+      "command" = "efm-langserver";
+      "config" = {
+        "documentFormatting" = true;
+        "languages" = {
+          "dhall" = [
+            { "formatCommand" = "dhall format"; "formatStdin" = true; }
+            ];
+          };
+        };
+      };
     "dockerfile" = {
       "args" = [ "--stdio" ];
       "command" = "docker-langserver";
@@ -315,7 +326,11 @@
       "indent" = { "tab-width" = 2; "unit" = "  "; };
       "injection-regex" = "dhall";
       "language-servers" = [
-        { "except-features" = []; "name" = "dhall"; "only-features" = []; }
+        {
+          "except-features" = [ "format" ];
+          "name" = "dhall";
+          "only-features" = [];
+          }
         {
           "except-features" = [];
           "name" = "dhall-formatter";
