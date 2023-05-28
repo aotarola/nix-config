@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    helix-master.url = "github:aotarola/helix/custom";
+    helix-custom.url = "github:aotarola/helix/custom";
     rust-overlay.url = "github:oxalica/rust-overlay";
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -15,10 +15,10 @@
   };
 
   outputs =
-    { self, utils, home-manager, nixpkgs, helix-master, nci, rust-overlay }:
+    { self, utils, home-manager, nixpkgs, helix-custom, nci, rust-overlay }:
     utils.lib.eachDefaultSystem (system:
     let
-      helixOverlay = import overlays/helix.nix helix-master system;
+      helixOverlay = import overlays/helix.nix helix-custom system;
       # poshOverlay = final: prev: {
 
       # };

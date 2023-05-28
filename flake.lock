@@ -37,57 +37,57 @@
     "dream2nix": {
       "inputs": {
         "all-cabal-json": [
-          "helix-master",
+          "helix-custom",
           "nci"
         ],
         "crane": "crane",
         "devshell": [
-          "helix-master",
+          "helix-custom",
           "nci"
         ],
         "drv-parts": "drv-parts",
         "flake-compat": "flake-compat",
         "flake-parts": [
-          "helix-master",
+          "helix-custom",
           "nci",
           "parts"
         ],
         "flake-utils-pre-commit": [
-          "helix-master",
+          "helix-custom",
           "nci"
         ],
         "ghc-utils": [
-          "helix-master",
+          "helix-custom",
           "nci"
         ],
         "gomod2nix": [
-          "helix-master",
+          "helix-custom",
           "nci"
         ],
         "mach-nix": [
-          "helix-master",
+          "helix-custom",
           "nci"
         ],
         "nix-pypi-fetcher": [
-          "helix-master",
+          "helix-custom",
           "nci"
         ],
         "nixpkgs": [
-          "helix-master",
+          "helix-custom",
           "nci",
           "nixpkgs"
         ],
         "nixpkgsV1": "nixpkgsV1",
         "poetry2nix": [
-          "helix-master",
+          "helix-custom",
           "nci"
         ],
         "pre-commit-hooks": [
-          "helix-master",
+          "helix-custom",
           "nci"
         ],
         "pruned-racket-catalog": [
-          "helix-master",
+          "helix-custom",
           "nci"
         ]
       },
@@ -167,19 +167,19 @@
     "drv-parts": {
       "inputs": {
         "flake-compat": [
-          "helix-master",
+          "helix-custom",
           "nci",
           "dream2nix",
           "flake-compat"
         ],
         "flake-parts": [
-          "helix-master",
+          "helix-custom",
           "nci",
           "dream2nix",
           "flake-parts"
         ],
         "nixpkgs": [
-          "helix-master",
+          "helix-custom",
           "nci",
           "dream2nix",
           "nixpkgs"
@@ -299,7 +299,7 @@
         "type": "github"
       }
     },
-    "helix-master": {
+    "helix-custom": {
       "inputs": {
         "nci": "nci",
         "nixpkgs": "nixpkgs",
@@ -378,12 +378,12 @@
         "dream2nix": "dream2nix",
         "mk-naked-shell": "mk-naked-shell",
         "nixpkgs": [
-          "helix-master",
+          "helix-custom",
           "nixpkgs"
         ],
         "parts": "parts",
         "rust-overlay": [
-          "helix-master",
+          "helix-custom",
           "rust-overlay"
         ]
       },
@@ -538,7 +538,7 @@
     "parts": {
       "inputs": {
         "nixpkgs-lib": [
-          "helix-master",
+          "helix-custom",
           "nci",
           "nixpkgs"
         ]
@@ -598,7 +598,7 @@
     },
     "root": {
       "inputs": {
-        "helix-master": "helix-master",
+        "helix-custom": "helix-custom",
         "home-manager": "home-manager",
         "nci": "nci_2",
         "nixpkgs": "nixpkgs_3",
@@ -610,7 +610,7 @@
       "inputs": {
         "flake-utils": "flake-utils",
         "nixpkgs": [
-          "helix-master",
+          "helix-custom",
           "nixpkgs"
         ]
       },
