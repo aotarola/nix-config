@@ -223,6 +223,7 @@ let
         {
           command = "pyright-langserver";
           args = [ "--stdio" ];
+          config = { }; # Yes, this is needed 🤷
         };
 
       elm =
