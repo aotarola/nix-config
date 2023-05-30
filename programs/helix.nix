@@ -43,7 +43,6 @@ let
         normal = {
           C-r = [ ":config-reload" ":reload" ];
           ret = ":w";
-          T = [ "goto_first_nonwhitespace" "find_till_char" ];
           X = "extend_line_above";
           H = ":buffer-previous";
           L = ":buffer-next";
