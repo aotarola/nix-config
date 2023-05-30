@@ -84,42 +84,44 @@ let
         command = "yaml-language-server";
         args = [ "--stdio" ];
         config = {
-          customTags = [
-            "!And"
-            "!And sequence"
-            "!If"
-            "!If sequence"
-            "!Not"
-            "!Not sequence"
-            "!Equals"
-            "!Equals sequence"
-            "!Or"
-            "!Or sequence"
-            "!FindInMap"
-            "!FindInMap sequence"
-            "!Base64"
-            "!Join"
-            "!Join sequence"
-            "!Cidr"
-            "!Ref"
-            "!Sub"
-            "!Sub sequence"
-            "!GetAtt"
-            "!GetAZs"
-            "!ImportValue"
-            "!ImportValue sequence"
-            "!Select"
-            "!Select sequence"
-            "!Split"
-            "!Split sequence"
-          ];
-          keyOrdering = false;
-          format = {
-            enable = true;
-            singleQuote = false;
-            bracketingSpacing = true;
+          yaml = {
+            customTags = [
+              "!And"
+              "!And sequence"
+              "!If"
+              "!If sequence"
+              "!Not"
+              "!Not sequence"
+              "!Equals"
+              "!Equals sequence"
+              "!Or"
+              "!Or sequence"
+              "!FindInMap"
+              "!FindInMap sequence"
+              "!Base64"
+              "!Join"
+              "!Join sequence"
+              "!Cidr"
+              "!Ref"
+              "!Sub"
+              "!Sub sequence"
+              "!GetAtt"
+              "!GetAZs"
+              "!ImportValue"
+              "!ImportValue sequence"
+              "!Select"
+              "!Select sequence"
+              "!Split"
+              "!Split sequence"
+            ];
+            keyOrdering = false;
+            format = {
+              enable = true;
+              singleQuote = false;
+              bracketingSpacing = true;
+            };
+            provideFormatter = false;
           };
-          provideFormatter = false;
         };
       };
 
