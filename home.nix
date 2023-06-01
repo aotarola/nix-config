@@ -19,7 +19,6 @@
         difftastic
         docker
         docker-compose
-        hadolint
         efm-langserver
         elmPackages.elm
         elmPackages.elm-format
@@ -33,10 +32,12 @@
         gh
         git-open
         gleam
+        hadolint
         jq
         kubectl
         less
         lsd
+        ltex-ls
         ncdu
         neovim
         nodePackages."@prisma/language-server"

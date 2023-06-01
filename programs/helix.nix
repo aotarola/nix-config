@@ -47,6 +47,8 @@ let
           H = ":buffer-previous";
           L = ":buffer-next";
           D = ":buffer-close-others";
+          # G = [ "goto_first_nonwhitespace" "select_mode" "goto_line_end" "change_selection" ];
+          G = [ "extend_to_line_bounds" "trim_selections" "change_selection" ];
           d = [ "yank_main_selection_to_clipboard" "normal_mode" "delete_selection" ];
           space = {
             c = ":bc";
@@ -65,6 +67,11 @@ let
   languages = {
     language-server = {
       # LSPs
+
+      ltex = {
+        command = "ltex-ls";
+      };
+
       rnix = {
         command = "rnix-lsp";
       };
@@ -443,6 +450,7 @@ let
             name = "markdown-linter";
             only-features = [ "diagnostics" ];
           }
+          "ltex"
         ];
       }
       {
