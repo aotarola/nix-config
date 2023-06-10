@@ -25,7 +25,7 @@
         config.allowUnfreePredicate = (_: true);
         overlays = [ helixOverlay (import rust-overlay) ];
       };
-      pcConfiguration = name:
+      config = name:
         home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
 
@@ -38,7 +38,7 @@
     {
       packages = {
         default = home-manager.defaultPackage.${system};
-        homeConfigurations.aotarola = pcConfiguration "aotarola";
+        homeConfigurations.aotarola = config "aotarola";
       };
     });
 }
