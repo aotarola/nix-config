@@ -19,9 +19,6 @@
     utils.lib.eachDefaultSystem (system:
     let
       helixOverlay = import overlays/helix.nix helix-custom system;
-      # poshOverlay = final: prev: {
-
-      # };
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
