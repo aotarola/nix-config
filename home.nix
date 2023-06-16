@@ -40,6 +40,7 @@
         ltex-ls
         ncdu
         neovim
+        ngrok
         nodePackages."@prisma/language-server"
         nodePackages.bash-language-server
         nodePackages.eslint_d

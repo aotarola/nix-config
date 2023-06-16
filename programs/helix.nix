@@ -379,7 +379,7 @@ let
           except-features = [ "format" ];
         }
         "eslint"
-        "copilot"
+        # "copilot"
       ];
     in
     [
@@ -479,7 +479,7 @@ let
             name = "python-formatter";
             only-features = [ "format" ];
           }
-          "copilot"
+          # "copilot"
         ];
       }
       {
