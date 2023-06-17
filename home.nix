@@ -82,6 +82,7 @@
     shellAliases =
       {
         c = "cd ~/.config/nixpkgs";
+        s = "kitty +kitten ssh";
         cdr = "alias gitroot='cd $(git rev-parse --show-toplevel)'";
         ga = "git add .";
         gc = "git commit";
