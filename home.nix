@@ -63,6 +63,7 @@
         rubyPackages_3_1.rubocop
         rubyPackages_3_1.solargraph
         ruby_3_1
+        slides
         taplo
         tree
         tree-sitter
