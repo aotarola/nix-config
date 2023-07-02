@@ -9,6 +9,7 @@ let
         mouse = false;
         rulers = [ 80 ];
         bufferline = "multiple";
+        shell = [ "zsh" "-c" ];
         indent-guides = {
           render = true;
           character = "┊";
