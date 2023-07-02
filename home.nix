@@ -14,6 +14,7 @@
         awscli2
         black
         btop
+        lazygit
         colima
         deno
         difftastic
