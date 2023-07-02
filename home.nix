@@ -38,6 +38,7 @@
         less
         lsd
         ltex-ls
+        marksman
         ncdu
         neovim
         ngrok
