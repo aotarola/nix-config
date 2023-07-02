@@ -43,12 +43,12 @@ let
       keys = {
         normal = {
           C-r = [ ":config-reload" ":reload" ];
+          esc = [ "collapse_selection" "keep_primary_selection" ];
           ret = ":w";
           X = "extend_line_above";
           H = ":buffer-previous";
           L = ":buffer-next";
           D = ":buffer-close-others";
-          # G = [ "goto_first_nonwhitespace" "select_mode" "goto_line_end" "change_selection" ];
           G = [ "extend_to_line_bounds" "trim_selections" "change_selection" ];
           d = [ "yank_main_selection_to_clipboard" "normal_mode" "delete_selection" ];
           space = {
