@@ -32,6 +32,7 @@
         gh
         git-open
         gleam
+        graph-easy
         hadolint
         jq
         kubectl
