@@ -218,8 +218,8 @@ let
       };
 
       markdown = {
-        command = "vscode-html-language-server";
-        args = [ "--stdio" ];
+        command = "marksman";
+        args = [ "server" ];
       };
 
       dockerfile =
