@@ -33,6 +33,11 @@ let
           select = "underline";
         };
 
+        soft-wrap =
+          {
+            enable = true;
+          };
+
         statusline = {
           center = [ "file-name" ];
           left = [ "mode" "spinner" ];
