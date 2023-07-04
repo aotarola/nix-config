@@ -14,7 +14,6 @@
         awscli2
         black
         btop
-        lazygit
         colima
         deno
         difftastic
@@ -112,6 +111,14 @@
   programs.helix = import ./programs/helix.nix;
 
   programs.home-manager.enable = true;
+
+  programs.lazygit =
+    {
+      enable = true;
+      settings = {
+        os.editPreset = "vscode";
+      };
+    };
 
   programs.fzf = {
     enable = true;
