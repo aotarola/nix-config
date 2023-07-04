@@ -46,4 +46,4 @@ Every time a new config change is done, update the system with:
 ./switch.sh
 ```
 
-_CAVEAT_: main change
+_CAVEAT_: new change
