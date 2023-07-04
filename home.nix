@@ -116,7 +116,7 @@
     {
       enable = true;
       settings = {
-        os.editPreset = "vscode";
+        os.editPreset = "helix";
       };
     };
 
