@@ -40,7 +40,7 @@ let
 
         statusline = {
           center = [ "file-name" ];
-          left = [ "mode" "spinner" ];
+          left = [ "mode" "spinner" "version-control" ];
           right = [ "diagnostics" "selections" "position" "file-encoding" "file-line-ending" "file-type" ];
         };
       };
