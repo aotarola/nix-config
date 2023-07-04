@@ -46,5 +46,4 @@ Every time a new config change is done, update the system with:
 ./switch.sh
 ```
 
-_CAVEAT_: If test you are configuring a new host from scratch, you might not have
-access to git, if that is so, feel free to download a binary for it.
+_CAVEAT_: main change
