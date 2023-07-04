@@ -3,7 +3,8 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    helix-custom.url = "github:aotarola/helix/custom";
+    # helix-custom.url = "github:aotarola/helix/custom";
+    helix-custom.url = "github:helix-editor/helix";
     rust-overlay.url = "github:oxalica/rust-overlay";
     home-manager = {
       url = "github:nix-community/home-manager";

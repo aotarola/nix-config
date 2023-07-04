@@ -116,7 +116,12 @@
     {
       enable = true;
       settings = {
-        os.editPreset = "helix";
+        os = {
+          edit = "/Users/aotarola/.nix-profile/bin/hx -- {{filename}}";
+          editAtLine = "/Users/aotarola/.nix-profile/bin/hx -- {{filename}}:{{line}}";
+          editAtLineAndWait = "/Users/aotarola/.nix-profile/bin/hx -- {{filename}}:{{line}}";
+          editInTerminal = true;
+        };
       };
     };
 
