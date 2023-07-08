@@ -1,7 +1,7 @@
 let
   settings =
     {
-      theme = "catppuccin_mocha";
+      theme = "dracula";
       editor = {
         color-modes = true;
         cursorline = true;
@@ -47,6 +47,8 @@ let
 
       keys = {
         normal = {
+          C-p = [ "goto_prev_diag" ];
+          C-n = [ "goto_next_diag" ];
           C-r = [ ":config-reload" ":reload" ];
           esc = [ "collapse_selection" "keep_primary_selection" ];
           ret = ":w";
