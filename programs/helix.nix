@@ -57,7 +57,6 @@ let
           L = ":buffer-next";
           D = ":buffer-close-others";
           G = [ "extend_to_line_bounds" "trim_selections" "change_selection" ];
-          d = [ "yank_main_selection_to_clipboard" "normal_mode" "delete_selection" ];
           space = {
             c = ":bc";
           };
@@ -419,6 +418,13 @@ let
         auto-format = true;
         language-servers = jsTSLspPack;
       }
+
+      {
+        name = "tsx";
+        auto-format = true;
+        language-servers = jsTSLspPack;
+      }
+
       {
         name = "javascript";
         auto-format = true;
