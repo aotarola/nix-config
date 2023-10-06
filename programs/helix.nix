@@ -24,7 +24,7 @@ let
 
         file-picker = {
           git-ignore = true;
-          hidden = true;
+          hidden = false;
         };
 
         cursor-shape = {

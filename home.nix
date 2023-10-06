@@ -9,7 +9,7 @@
 
     packages = with pkgs;
       [
-        (python310.withPackages (ps: with ps; [ python-lsp-server pytest pipx ] ++ python-lsp-server.optional-dependencies.all))
+        (python310.withPackages (ps: with ps; [ boto3 argparse pymysql python-lsp-server pytest pipx ] ++ python-lsp-server.optional-dependencies.all))
         (rust-bin.stable.latest.default.override { extensions = [ "cargo" "rust-analysis" "rust-src" "rust-std" "rustc" "rust-analyzer" ]; })
         awscli2
         black
