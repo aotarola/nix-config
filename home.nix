@@ -76,6 +76,7 @@
       EDITOR = "hx";
       VISUAL = "hx";
       DOCKER_HOST = "unix://$HOME/.colima/docker.sock";
+      AWS_SDK_JS_SUPPRESS_MAINTENANCE_MODE_MESSAGE = "1";
     };
 
     sessionPath = [

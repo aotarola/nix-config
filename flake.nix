@@ -38,7 +38,7 @@
     {
       packages = {
         default = home-manager.defaultPackage.${system};
-        homeConfigurations.aotarola = config "aotarola";
+        homeConfigurations.andres = config "andres";
       };
     });
 }
