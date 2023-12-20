@@ -130,7 +130,7 @@ let
             keyOrdering = false;
             format = {
               enable = true;
-              singleQuote = false;
+              singleQuote = true;
               bracketingSpacing = true;
             };
             provideFormatter = false;
@@ -257,7 +257,7 @@ let
           documentFormatting = true;
           languages = {
             json = [{
-              formatCommand = "fixjson";
+              formatCommand = "prettier --parser json";
               formatStdin = true;
             }];
           };

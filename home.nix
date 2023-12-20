@@ -67,6 +67,7 @@
         ruby_3_1
         slides
         taplo
+        tmate
         tree
         tree-sitter
         wget
@@ -88,7 +89,7 @@
       {
         c = "cd ~/.config/nixpkgs";
         cdr = "alias gitroot='cd $(git rev-parse --show-toplevel)'";
-        ga = "git add .";
+        ga = "git add";
         gc = "git commit";
         gca = "git commit -v -a";
         gco = "git checkout";
