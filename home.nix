@@ -15,6 +15,7 @@
         black
         btop
         colima
+        cowsay
         deno
         difftastic
         docker
@@ -35,6 +36,7 @@
         graph-easy
         hadolint
         jq
+        yq
         kubectl
         less
         lsd
