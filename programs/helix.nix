@@ -426,6 +426,24 @@ let
     in
     [
       {
+        name = "roc";
+        scope = "source.roc";
+        injection-regex = "roc";
+        file-types = [ "roc" ];
+        shebangs = [ "roc" ];
+        roots = [ ];
+        comment-token = "#";
+        language-servers = [ "roc-ls" ];
+        indent =
+          { tab-width = 2; unit = " "; };
+        formatter =
+          {
+            command = "roc";
+            args = [ "format" "--stdin" "--stdout" ];
+          };
+        auto-format = true;
+      }
+      {
         name = "nix";
         auto-format = true;
         language-servers = [ "nix-lsp" ];
