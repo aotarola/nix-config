@@ -192,6 +192,11 @@ let
           };
         };
 
+      roc =
+        {
+          command = "roc_lang_server";
+        };
+
       prisma = {
         command = "prisma-language-server";
         args = [ "--stdio" ];
@@ -433,7 +438,7 @@ let
         shebangs = [ "roc" ];
         roots = [ ];
         comment-token = "#";
-        language-servers = [ "roc-ls" ];
+        language-servers = [ "roc" ];
         indent =
           { tab-width = 2; unit = " "; };
         formatter =
