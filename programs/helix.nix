@@ -399,6 +399,16 @@ let
     };
   };
 
+  languages.grammar = [
+    {
+      name = "roc";
+      source = {
+        git = "https://github.com/faldor20/tree-sitter-roc.git";
+        rev = "5cad46196df1bf6dd1963b7ac2568054865550cc";
+      };
+    }
+  ];
+
   languages.language =
     let
       jsTSLspPack = [
