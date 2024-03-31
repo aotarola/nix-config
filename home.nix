@@ -9,8 +9,10 @@
 
     packages = with pkgs;
       [
-        (python310.withPackages (ps: with ps; [ boto3 argparse pymysql python-lsp-server pytest pipx ] ++ python-lsp-server.optional-dependencies.all))
+        # (python310.withPackages (ps: with ps; [ boto3 argparse pymysql python-lsp-server pytest pipx ] ++ python-lsp-server.optional-dependencies.all))
         (rust-bin.stable.latest.default.override { extensions = [ "cargo" "rust-analysis" "rust-src" "rust-std" "rustc" "rust-analyzer" ]; })
+        python312
+        poetry
         awscli2
         black
         btop
@@ -21,12 +23,12 @@
         docker
         docker-compose
         efm-langserver
-        elmPackages.elm
-        elmPackages.elm-format
-        elmPackages.elm-json
-        elmPackages.elm-language-server
-        elmPackages.elm-review
-        elmPackages.elm-test
+        # elmPackages.elm
+        # elmPackages.elm-format
+        # elmPackages.elm-json
+        # elmPackages.elm-language-server
+        # elmPackages.elm-review
+        # elmPackages.elm-test
         erlang
         exercism
         fd
@@ -63,7 +65,7 @@
         nodejs-18_x
         pgformatter
         pipenv
-        rnix-lsp
+        # rnix-lsp
         rubyPackages_3_1.rubocop
         rubyPackages_3_1.solargraph
         ruby_3_1
