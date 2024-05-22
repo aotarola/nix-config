@@ -240,10 +240,11 @@ let
           args = [ "--stdio" ];
           config = { 
             reportMissingtypeStubs = false;
+            disableOrganizeImports = true;
           };
         };
 
-      python-ruff = {
+      ruff-lsp = {
         command = "ruff-lsp";
         documenFormatting = true;
         settings = {
@@ -346,6 +347,20 @@ let
             languages = {
               python = [{
                 formatCommand = "black --quiet - | isort -";
+                formatStdin = true;
+              }];
+            };
+          };
+        };
+
+      ruff-formatter =
+        {
+          command = "efm-langserver";
+          config = {
+            documentFormatting = true;
+            languages = {
+              python = [{
+                formatCommand = "ruff --fix -";
                 formatStdin = true;
               }];
             };
@@ -497,12 +512,16 @@ let
         language-servers = [
           {
             name = "python";
-            except-features = [ "format" "diagnostics" ];
+            except-features = [ "format" ];
           }
           {
-            name = "python-ruff";
+            name = "ruff-lsp";
             only-features = [ "format" "diagnostics" ];
           }
+          # {
+          #   name = "ruff-formatter";
+          #   only-features = [ "format" ];
+          # }
           # "copilot"
         ];
       }

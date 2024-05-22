@@ -17,7 +17,7 @@
         # poetry
         redis
         awscli2
-        black
+        # black
         btop
         # colima
         cowsay
