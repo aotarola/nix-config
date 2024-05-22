@@ -79,8 +79,8 @@ let
         command = "ltex-ls";
       };
 
-      rnix = {
-        command = "rnix-lsp";
+      nix-lsp = {
+        command = "nixd";
       };
 
       copilot = {
@@ -238,8 +238,18 @@ let
         {
           command = "pyright-langserver";
           args = [ "--stdio" ];
-          config = { }; # Yes, this is needed 🤷
+          config = { 
+            reportMissingtypeStubs = false;
+          };
         };
+
+      python-ruff = {
+        command = "ruff-lsp";
+        documenFormatting = true;
+        settings = {
+          run = "onSave";
+        };
+      };
 
       elm =
         {
@@ -335,7 +345,7 @@ let
             documentFormatting = true;
             languages = {
               python = [{
-                formatCommand = "black --fast --quiet -";
+                formatCommand = "black --quiet - | isort -";
                 formatStdin = true;
               }];
             };
@@ -393,7 +403,7 @@ let
       {
         name = "nix";
         auto-format = true;
-        language-servers = [ "rnix" ];
+        language-servers = [ "nix-lsp" ];
       }
       { name = "rust"; auto-format = true; file-types = [ "lalrpop" "rs" ]; language-servers = [ "rust-analyzer" ]; }
       { name = "sql"; auto-format = true; formatter.command = "pg_format"; }
@@ -487,11 +497,11 @@ let
         language-servers = [
           {
             name = "python";
-            except-features = [ "format" ];
+            except-features = [ "format" "diagnostics" ];
           }
           {
-            name = "python-formatter";
-            only-features = [ "format" ];
+            name = "python-ruff";
+            only-features = [ "format" "diagnostics" ];
           }
           # "copilot"
         ];

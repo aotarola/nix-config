@@ -2,7 +2,7 @@
 
 {
   home = {
-    inherit username;
+    inherit username;   
 
     homeDirectory = "/Users/" + username;
     stateVersion = "23.05";
@@ -10,18 +10,21 @@
     packages = with pkgs;
       [
         # (python310.withPackages (ps: with ps; [ boto3 argparse pymysql python-lsp-server pytest pipx ] ++ python-lsp-server.optional-dependencies.all))
+        # (python311.withPackages (ps: with ps; [ poetry ] ))
         (rust-bin.stable.latest.default.override { extensions = [ "cargo" "rust-analysis" "rust-src" "rust-std" "rustc" "rust-analyzer" ]; })
-        python312
-        poetry
+        pyenv
+        # python312
+        # poetry
+        redis
         awscli2
         black
         btop
-        colima
+        # colima
         cowsay
         deno
         difftastic
-        docker
-        docker-compose
+        # docker
+        # docker-compose
         efm-langserver
         # elmPackages.elm
         # elmPackages.elm-format
@@ -56,7 +59,7 @@
         nodePackages.mermaid-cli
         nodePackages.pnpm
         nodePackages.prettier
-        nodePackages.pyright
+        # nodePackages.pyright
         nodePackages.serverless
         nodePackages.typescript-language-server
         nodePackages.yaml-language-server
@@ -66,6 +69,7 @@
         pgformatter
         pipenv
         # rnix-lsp
+        nixd
         rubyPackages_3_1.rubocop
         rubyPackages_3_1.solargraph
         ruby_3_1
@@ -80,7 +84,7 @@
     sessionVariables = {
       EDITOR = "hx";
       VISUAL = "hx";
-      DOCKER_HOST = "unix://$HOME/.colima/docker.sock";
+      # DOCKER_HOST = "unix://$HOME/.colima/docker.sock";
       AWS_SDK_JS_SUPPRESS_MAINTENANCE_MODE_MESSAGE = "1";
     };
 
