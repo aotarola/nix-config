@@ -9,15 +9,10 @@
 
     packages = with pkgs;
       [
-        # (python310.withPackages (ps: with ps; [ boto3 argparse pymysql python-lsp-server pytest pipx ] ++ python-lsp-server.optional-dependencies.all))
-        # (python311.withPackages (ps: with ps; [ poetry ] ))
         (rust-bin.stable.latest.default.override { extensions = [ "cargo" "rust-analysis" "rust-src" "rust-std" "rustc" "rust-analyzer" ]; })
         pyenv
-        # python312
-        # poetry
         redis
         awscli2
-        # black
         btop
         # colima
         cowsay
@@ -26,12 +21,12 @@
         # docker
         # docker-compose
         efm-langserver
-        # elmPackages.elm
-        # elmPackages.elm-format
-        # elmPackages.elm-json
-        # elmPackages.elm-language-server
-        # elmPackages.elm-review
-        # elmPackages.elm-test
+        elmPackages.elm
+        elmPackages.elm-format
+        elmPackages.elm-json
+        elmPackages.elm-language-server
+        elmPackages.elm-review
+        elmPackages.elm-test
         erlang
         exercism
         fd
@@ -59,8 +54,6 @@
         nodePackages.mermaid-cli
         nodePackages.pnpm
         nodePackages.prettier
-        # nodePackages.pyright
-        nodePackages.serverless
         nodePackages.typescript-language-server
         nodePackages.yaml-language-server
         nodePackages.yarn
@@ -68,7 +61,6 @@
         nodejs-18_x
         pgformatter
         pipenv
-        # rnix-lsp
         nixd
         rubyPackages_3_1.rubocop
         rubyPackages_3_1.solargraph
@@ -79,6 +71,8 @@
         tree
         tree-sitter
         wget
+        yazi
+        zellij
       ];
 
     sessionVariables = {

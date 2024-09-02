@@ -5,6 +5,10 @@ let
       editor = {
         color-modes = true;
         cursorline = true;
+        inline-diagnostics = {
+          cursor-line = "hint";
+          other-lines = "error";
+        };
         line-number = "relative";
         mouse = false;
         rulers = [ 80 ];
@@ -194,7 +198,7 @@ let
 
       roc =
         {
-          command = "roc_lang_server";
+          command = "roc_language_server";
         };
 
       prisma = {
@@ -372,6 +376,19 @@ let
           };
         };
 
+      elm-formatter =
+        {
+          command = "efm-langserver";
+          config = {
+            languages = {
+              python = [{
+                formatCommand = "elm-format --stdin";
+                formatStdin = true;
+              }];
+            };
+          };
+        };
+
       # Linters
 
       markdown-linter = {
@@ -409,7 +426,7 @@ let
       name = "roc";
       source = {
         git = "https://github.com/faldor20/tree-sitter-roc.git";
-        rev = "5cad46196df1bf6dd1963b7ac2568054865550cc";
+        rev = "ef46edd0c03ea30a22f7e92bc68628fb7231dc8a";
       };
     }
   ];
@@ -561,7 +578,10 @@ let
       {
         name = "elm";
         auto-format = true;
-        language-servers = [ "elm" ];
+        language-servers = [ 
+          {name="elm" ; except-features = ["format"];}
+          {name="elm-formatter" ; only-features = ["format"];}
+        ];
       }
     ];
 
