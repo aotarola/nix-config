@@ -1,7 +1,7 @@
 let
   settings =
     {
-      theme = "dracula";
+      theme = "catppuccin_mocha";
       editor = {
         color-modes = true;
         cursorline = true;

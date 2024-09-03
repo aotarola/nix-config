@@ -13,13 +13,16 @@
         pyenv
         redis
         awscli2
+        graphviz
+        # black
         btop
-        # colima
+        colima
         cowsay
         deno
+        parallel
         difftastic
-        # docker
-        # docker-compose
+        docker
+        docker-compose
         efm-langserver
         elmPackages.elm
         elmPackages.elm-format
