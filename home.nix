@@ -34,6 +34,7 @@
         git-open
         gleam
         graph-easy
+        glow
         hadolint
         jq
         yq

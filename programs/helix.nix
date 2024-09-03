@@ -5,6 +5,7 @@ let
       editor = {
         color-modes = true;
         cursorline = true;
+        end-of-line-diagnostics = "hint";
         inline-diagnostics = {
           cursor-line = "hint";
           other-lines = "error";
@@ -20,7 +21,7 @@ let
           skip-levels = 1;
         };
         lsp = {
-          display-messages = false;
+          display-messages = true;
           snippets = true;
           auto-signature-help = false;
           display-signature-help-docs = false;
@@ -45,7 +46,7 @@ let
         statusline = {
           center = [ "file-name" ];
           left = [ "mode" "spinner" "version-control" ];
-          right = [ "diagnostics" "selections" "position" "file-encoding" "file-line-ending" "file-type" ];
+          right = [ "diagnostics" "selections" "position" "file-encoding" "file-line-ending" "file-type"  "position-percentage" "total-line-numbers" ];
         };
       };
 
@@ -54,15 +55,19 @@ let
           C-p = [ "goto_prev_diag" ];
           C-n = [ "goto_next_diag" ];
           C-r = [ ":config-reload" ":reload" ];
+          L = {
+            c = "@|hxai ";
+          };
           esc = [ "collapse_selection" "keep_primary_selection" ];
           ret = ":w";
           X = "extend_line_above";
           H = ":buffer-previous";
-          L = ":buffer-next";
+          # L = ":buffer-next";
           D = ":buffer-close-others";
           G = [ "extend_to_line_bounds" "trim_selections" "change_selection" ];
           space = {
             c = ":bc";
+            o = [ ":sh gh repo view --web" ];
           };
         };
 
