@@ -48,7 +48,6 @@
         marksman
         ncdu
         neovim
-        ngrok
         nodePackages."@prisma/language-server"
         nodePackages.bash-language-server
         nodePackages.eslint_d
@@ -62,7 +61,7 @@
         nodePackages.yaml-language-server
         nodePackages.yarn
         nodePackages_latest.vscode-langservers-extracted
-        nodejs-18_x
+        nodejs_20
         pgformatter
         pipenv
         nixd

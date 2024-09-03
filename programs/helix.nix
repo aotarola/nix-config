@@ -55,14 +55,14 @@ let
           C-p = [ "goto_prev_diag" ];
           C-n = [ "goto_next_diag" ];
           C-r = [ ":config-reload" ":reload" ];
-          L = {
-            c = "@|hxai ";
+          C-l = {
+            c = "@|hxai.sh ";
           };
           esc = [ "collapse_selection" "keep_primary_selection" ];
           ret = ":w";
           X = "extend_line_above";
           H = ":buffer-previous";
-          # L = ":buffer-next";
+          L = ":buffer-next";
           D = ":buffer-close-others";
           G = [ "extend_to_line_bounds" "trim_selections" "change_selection" ];
           space = {
@@ -266,7 +266,7 @@ let
         };
       };
 
-      elm =
+      elm-lsp =
         {
           command = "elm-language-server";
           config = {
@@ -375,19 +375,6 @@ let
             languages = {
               python = [{
                 formatCommand = "ruff --fix -";
-                formatStdin = true;
-              }];
-            };
-          };
-        };
-
-      elm-formatter =
-        {
-          command = "efm-langserver";
-          config = {
-            languages = {
-              python = [{
-                formatCommand = "elm-format --stdin";
                 formatStdin = true;
               }];
             };
@@ -583,10 +570,7 @@ let
       {
         name = "elm";
         auto-format = true;
-        language-servers = [ 
-          {name="elm" ; except-features = ["format"];}
-          {name="elm-formatter" ; only-features = ["format"];}
-        ];
+        language-servers = [ "elm-lsp" ];
       }
     ];
 
