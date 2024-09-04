@@ -119,19 +119,6 @@
 
   programs.home-manager.enable = true;
 
-  programs.lazygit =
-    {
-      enable = true;
-      settings = {
-        os = {
-          edit = "/Users/aotarola/.nix-profile/bin/hx -- {{filename}}";
-          editAtLine = "/Users/aotarola/.nix-profile/bin/hx -- {{filename}}:{{line}}";
-          editAtLineAndWait = "/Users/aotarola/.nix-profile/bin/hx -- {{filename}}:{{line}}";
-          editInTerminal = true;
-        };
-      };
-    };
-
   programs.fzf = {
     enable = true;
     enableZshIntegration = true;

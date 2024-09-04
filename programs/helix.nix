@@ -86,6 +86,13 @@ let
 
       ltex = {
         command = "ltex-ls";
+        config = {
+          ltex ={
+            dictionary = {
+              en-US = ["XOPS" "TAL" "DataOps" "runbook" "dataops" "Pydantic" "xops"];
+            };
+          };
+        };
       };
 
       nix-lsp = {
@@ -459,8 +466,8 @@ let
       }
       {
         name = "nix";
-        auto-format = true;
-        language-servers = [ "nix-lsp" ];
+        auto-format = false;
+        language-servers = [ {name = "nix-lsp"; except-features = ["format"]; } ];
       }
       { name = "rust"; auto-format = true; file-types = [ "lalrpop" "rs" ]; language-servers = [ "rust-analyzer" ]; }
       { name = "sql"; auto-format = true; formatter.command = "pg_format"; }
