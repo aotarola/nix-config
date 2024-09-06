@@ -10,11 +10,10 @@
     packages = with pkgs;
       [
         (rust-bin.stable.latest.default.override { extensions = [ "cargo" "rust-analysis" "rust-src" "rust-std" "rustc" "rust-analyzer" ]; })
-        pyenv
+        asdf-vm
         redis
         awscli2
         graphviz
-        # black
         btop
         colima
         cowsay
@@ -55,13 +54,11 @@
         nodePackages.graphql-language-service-cli
         nodePackages.markdownlint-cli
         nodePackages.mermaid-cli
-        nodePackages.pnpm
         nodePackages.prettier
         nodePackages.typescript-language-server
         nodePackages.yaml-language-server
         nodePackages.yarn
         nodePackages_latest.vscode-langservers-extracted
-        nodejs_20
         pgformatter
         pipenv
         nixd
@@ -145,6 +142,11 @@
       ];
 
     };
+
+    initExtra = ''
+    . "${pkgs.asdf-vm}/share/asdf-vm/asdf.sh"
+    . "${pkgs.asdf-vm}/share/asdf-vm/completions/asdf.bash"
+    '';
 
   };
 
