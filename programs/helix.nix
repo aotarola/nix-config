@@ -428,6 +428,13 @@ let
         rev = "ef46edd0c03ea30a22f7e92bc68628fb7231dc8a";
       };
     }
+    {
+      name = "bal";
+      source = {
+        git = "https://github.com/heshanpadmasiri/tree-sitter-ballerina.git";
+        rev = "771a918fd214cd8759a715f4b2db032414022fc5";
+      };
+    }
   ];
 
   languages.language =
@@ -463,6 +470,24 @@ let
             args = [ "format" "--stdin" "--stdout" ];
           };
         auto-format = true;
+      }
+      {
+        name = "bal";
+        scope = "source.bal";
+        injection-regex = "bal";
+        file-types = [ "bal" ];
+        shebangs = [ "bal" ];
+        roots = [ ];
+        comment-token = "//";
+        language-servers = [ "bal" ];
+        indent =
+          { tab-width = 2; unit = " "; };
+        # formatter =
+        #   {
+        #     command = "roc";
+        #     args = [ "format" "--stdin" "--stdout" ];
+        #   };
+        # auto-format = true;
       }
       {
         name = "nix";

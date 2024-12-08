@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    helix-custom.url = "github:helix-editor/helix/master";
+    helix-custom.url = "github:helix-editor/helix?rev=a7651f5bf027ec98645d571ab05a685d97e1b772";
     rust-overlay.url = "github:oxalica/rust-overlay";
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -38,7 +38,7 @@
     {
       packages = {
         default = home-manager.defaultPackage.${system};
-        homeConfigurations.andres = config "andres";
+        homeConfigurations.aotarola = config "aotarola";
       };
     });
 }

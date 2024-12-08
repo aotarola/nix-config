@@ -59,6 +59,7 @@
         nodePackages.yaml-language-server
         nodePackages.yarn
         nodePackages_latest.vscode-langservers-extracted
+        opam
         pgformatter
         pipenv
         nixd
@@ -76,13 +77,14 @@
     sessionVariables = {
       EDITOR = "hx";
       VISUAL = "hx";
-      # DOCKER_HOST = "unix://$HOME/.colima/docker.sock";
+      DOCKER_HOST = "unix://$HOME/.colima/docker.sock";
       AWS_SDK_JS_SUPPRESS_MAINTENANCE_MODE_MESSAGE = "1";
     };
 
     sessionPath = [
       "$HOME/.cargo/bin"
       "$HOME/.local/bin"
+      "/Applications/Postgres.app/Contents/Versions/latest/bin"
     ];
 
     shellAliases =
@@ -144,6 +146,7 @@
     initExtra = ''
     . "${pkgs.asdf-vm}/share/asdf-vm/asdf.sh"
     . "${pkgs.asdf-vm}/share/asdf-vm/completions/asdf.bash"
+    eval $(opam env --switch=default --set-switch)
     '';
 
   };
