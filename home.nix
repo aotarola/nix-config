@@ -23,12 +23,12 @@
         docker
         docker-compose
         efm-langserver
-        elmPackages.elm
-        elmPackages.elm-format
-        elmPackages.elm-json
-        elmPackages.elm-language-server
-        elmPackages.elm-review
-        elmPackages.elm-test
+        # elmPackages.elm
+        # elmPackages.elm-format
+        # elmPackages.elm-json
+        # elmPackages.elm-language-server
+        # elmPackages.elm-review
+        # elmPackages.elm-test
         erlang
         exercism
         fd
@@ -78,12 +78,16 @@
       EDITOR = "hx";
       VISUAL = "hx";
       DOCKER_HOST = "unix://$HOME/.colima/docker.sock";
+      PNPM_HOME="$HOME/.local/pnpm";
+      ELM_HOME="$HOME/.local/elm";
       AWS_SDK_JS_SUPPRESS_MAINTENANCE_MODE_MESSAGE = "1";
     };
 
     sessionPath = [
       "$HOME/.cargo/bin"
       "$HOME/.local/bin"
+      "$HOME/.local/pnpm"
+      "$HOME/.local/elm"
       "/Applications/Postgres.app/Contents/Versions/latest/bin"
     ];
 
@@ -145,6 +149,7 @@
 
     initExtra = ''
     . "${pkgs.asdf-vm}/share/asdf-vm/asdf.sh"
+    autoload -Uz bashcompinit && bashcompinit
     . "${pkgs.asdf-vm}/share/asdf-vm/completions/asdf.bash"
     eval $(opam env --switch=default --set-switch)
     '';
