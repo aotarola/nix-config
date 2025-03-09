@@ -52,6 +52,7 @@ let
 
       keys = {
         normal = {
+          C-b = [ ":sh git blame --date=short -L %{cursor_line},+1 %{buffer_name}" ];
           C-p = [ "goto_prev_diag" ];
           C-n = [ "goto_next_diag" ];
           C-r = [ ":config-reload" ":reload-all" ];
