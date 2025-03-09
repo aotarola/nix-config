@@ -53,7 +53,7 @@
         neovim
         nodePackages."@prisma/language-server"
         nodePackages.bash-language-server
-        nodePackages.eslint_d
+        # nodePackages.eslint_d
         nodePackages.fixjson
         nodePackages.graphql-language-service-cli
         nodePackages.markdownlint-cli
@@ -81,9 +81,9 @@
     sessionVariables = {
       EDITOR = "hx";
       VISUAL = "hx";
-      DOCKER_HOST = "unix://$HOME/.colima/docker.sock";
-      PNPM_HOME="$HOME/.local/pnpm";
+      # DOCKER_HOST = "unix://$HOME/.colima/docker.sock";
       ELM_HOME="$HOME/.local/elm";
+      PNPM_HOME = "$HOME/.local/pnpm";
       AWS_SDK_JS_SUPPRESS_MAINTENANCE_MODE_MESSAGE = "1";
     };
 

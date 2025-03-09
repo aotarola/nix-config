@@ -54,7 +54,7 @@ let
         normal = {
           C-p = [ "goto_prev_diag" ];
           C-n = [ "goto_next_diag" ];
-          C-r = [ ":config-reload" ":reload" ];
+          C-r = [ ":config-reload" ":reload-all" ];
           C-l = {
             c = "@|hxai.sh ";
           };
