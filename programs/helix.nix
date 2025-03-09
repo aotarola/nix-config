@@ -278,6 +278,7 @@ let
           command = "elm-language-server";
           config = {
             # onlyUpdateDiagnosticsOnSave = true;
+            elmReviewDiagnostics = "error";
           };
         };
 

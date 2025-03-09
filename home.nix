@@ -15,8 +15,12 @@
         awscli2
         graphviz
         btop
+        gopls
         colima
         cowsay
+        go
+        golangci-lint
+        golangci-lint-langserver
         deno
         parallel
         difftastic
