@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    helix-custom.url = "github:helix-editor/helix?rev=127567df8e88cfa71feb66619a6016988d984256";
+    helix-custom.url = "github:helix-editor/helix?rev=dc4761ad3a09a1cc9a3219d75765ff098fb203af";
     rust-overlay.url = "github:oxalica/rust-overlay";
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -25,20 +25,17 @@
         config.allowUnfreePredicate = (_: true);
         overlays = [ helixOverlay (import rust-overlay) ];
       };
-      config = name:
-        home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-
-          extraSpecialArgs = { username = name; };
-          modules = [ ./home.nix ];
-
-        };
-
+      homeConfig = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        extraSpecialArgs = { username = "andres"; };
+        modules = [ ./home.nix ];
+      };
     in
     {
+      homeConfigurations.andres = homeConfig;
+
       packages = {
-        default = home-manager.defaultPackage.${system};
-        homeConfigurations.aotarola = config "aotarola";
+        default = homeConfig.activationPackage;
       };
     });
 }

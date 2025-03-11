@@ -55,7 +55,6 @@
         nodePackages.bash-language-server
         # nodePackages.eslint_d
         nodePackages.fixjson
-        nodePackages.graphql-language-service-cli
         nodePackages.markdownlint-cli
         nodePackages.mermaid-cli
         nodePackages.prettier
@@ -155,7 +154,7 @@
     . "${pkgs.asdf-vm}/share/asdf-vm/asdf.sh"
     autoload -Uz bashcompinit && bashcompinit
     . "${pkgs.asdf-vm}/share/asdf-vm/completions/asdf.bash"
-    eval $(opam env --switch=default --set-switch)
+    # eval $(opam env --switch=default --set-switch)
     '';
 
   };
