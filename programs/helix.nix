@@ -52,7 +52,9 @@ let
 
       keys = {
         normal = {
-          C-b = [ ":sh git blame --date=short -L %{cursor_line},+1 %{buffer_name}" ];
+          C-b = [ ":echo %sh{git blame -L %{cursor_line},+1 %{buffer_name}}" ];
+          C-q = [ ":echo %sh{echo %{buffer_name}:%{cursor_line} | pbcopy | echo \"%{buffer_name}:%{cursor_line} copied to clipboard!\"}" ];
+          C-a = [ ":echo %sh{echo %{buffer_name} | pbcopy | echo \"%{buffer_name} copied to clipboard!\"}" ];
           C-p = [ "goto_prev_diag" ];
           C-n = [ "goto_next_diag" ];
           C-r = [ ":config-reload" ":reload-all" ];
