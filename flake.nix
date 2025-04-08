@@ -27,7 +27,7 @@
       };
       homeConfig = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        extraSpecialArgs = { username = "andres"; };
+        extraSpecialArgs = { username = "aotarola"; };
         modules = [ ./home.nix ];
       };
     in
