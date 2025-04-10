@@ -33,6 +33,8 @@
         graph-easy
         glow
         go-task
+        golangci-lint-langserver
+        # golangci-lint
         hadolint
         jq
         yq
