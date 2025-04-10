@@ -18,21 +18,12 @@
         gopls
         colima
         cowsay
-        go
-        golangci-lint
-        golangci-lint-langserver
         deno
         parallel
         difftastic
         docker
         docker-compose
         efm-langserver
-        # elmPackages.elm
-        # elmPackages.elm-format
-        # elmPackages.elm-json
-        # elmPackages.elm-language-server
-        # elmPackages.elm-review
-        # elmPackages.elm-test
         erlang
         exercism
         fd
@@ -41,6 +32,7 @@
         gleam
         graph-easy
         glow
+        go-task
         hadolint
         jq
         yq
@@ -53,7 +45,6 @@
         neovim
         nodePackages."@prisma/language-server"
         nodePackages.bash-language-server
-        # nodePackages.eslint_d
         nodePackages.fixjson
         nodePackages.markdownlint-cli
         nodePackages.mermaid-cli
