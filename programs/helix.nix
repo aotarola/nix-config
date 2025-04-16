@@ -439,6 +439,13 @@ let
         rev = "771a918fd214cd8759a715f4b2db032414022fc5";
       };
     }
+    {
+      name = "bruno";
+      source = {
+        git = "https://github.com/Scalamando/tree-sitter-bruno.git";
+        rev = "dd27fe0eff8e7f8184dfc91e426b886dc8369c46";
+      };
+    }
   ];
 
   languages.language =
@@ -492,6 +499,15 @@ let
         #     args = [ "format" "--stdin" "--stdout" ];
         #   };
         # auto-format = true;
+      }
+      {
+        name = "bruno";
+        scope = "source.bru";
+        injection-regex = "bru";
+        file-types = [ "bru" ];
+        roots = [ ];
+        # comment-token = "#";
+        indent = { tab-width = 2; unit = " "; };
       }
       {
         name = "nix";
