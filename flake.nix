@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    helix-custom.url = "github:helix-editor/helix?rev=a79979462395a1804e59b97732481b15874187a7";
+    helix-custom.url = "github:helix-editor/helix?rev=523e8aa7816cde5f0dc38593737b50527e3348fe";
     rust-overlay.url = "github:oxalica/rust-overlay";
     home-manager = {
       url = "github:nix-community/home-manager";
