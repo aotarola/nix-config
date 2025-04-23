@@ -55,6 +55,7 @@ let
           C-b = [ ":echo %sh{git blame -L %{cursor_line},+1 %{buffer_name}}" ];
           C-q = [ ":echo %sh{echo %{buffer_name}:%{cursor_line} | pbcopy | echo \"%{buffer_name}:%{cursor_line} copied to clipboard!\"}" ];
           C-a = [ ":echo %sh{echo %{buffer_name} | pbcopy | echo \"%{buffer_name} copied to clipboard!\"}" ];
+          C-x = [ ":reset-diff-change" ];
           C-p = [ "goto_prev_diag" ];
           C-n = [ "goto_next_diag" ];
           C-r = [ ":config-reload" ":reload-all" ];
@@ -79,6 +80,8 @@ let
           up = "move_line_up";
           left = "move_char_left";
           right = "move_char_right";
+          S-ret = ["normal_mode" "extend_line_above" "extend_line_above" "delete_selection" "open_above"];
+                    
         };
       };
     };
