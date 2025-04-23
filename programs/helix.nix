@@ -81,7 +81,6 @@ let
           left = "move_char_left";
           right = "move_char_right";
           S-ret = ["normal_mode" "extend_line_above" "extend_line_above" "delete_selection" "open_above"];
-                    
         };
       };
     };
