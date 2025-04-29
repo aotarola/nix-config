@@ -180,6 +180,7 @@
         r = "remote --verbose";
         repo = "open";
         dft = "difftool";
+        sync = "!git switch main && git pull --prune && git branch --format '%(refname:short) %(upstream:track)' | awk '$2 == \"[gone]\" { print $1 }' | xargs -r git branch -D";
       };
       color = {
         ui = true;
