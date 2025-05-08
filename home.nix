@@ -10,6 +10,7 @@
     packages = with pkgs;
       [
         (rust-bin.stable.latest.default.override { extensions = [ "cargo" "rust-analysis" "rust-src" "rust-std" "rustc" "rust-analyzer" ]; })
+        aichat
         asdf-vm
         redis
         awscli2
@@ -109,6 +110,7 @@
         nci = "npm ci";
         ns = "npm start";
         s = "kitty +kitten ssh";
+        ai = "aichat -e ";
       };
   };
 
