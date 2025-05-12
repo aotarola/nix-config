@@ -22,7 +22,6 @@
         docker
         docker-compose
         efm-langserver
-        erlang
         exercism
         fd
         gh
@@ -49,7 +48,6 @@
         nodePackages.yaml-language-server
         nodePackages.yarn
         nodePackages_latest.vscode-langservers-extracted
-        opam
         pgformatter
         pipenv
         nixd
