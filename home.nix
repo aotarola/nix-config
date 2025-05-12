@@ -9,17 +9,14 @@
 
     packages = with pkgs;
       [
-        # (rust-bin.stable.latest.default.override { extensions = [ "cargo" "rust-analysis" "rust-src" "rust-std" "rustc" "rust-analyzer" ]; })
         aichat
         asdf-vm
         redis
         awscli2
         graphviz
         btop
-        # gopls
         colima
         cowsay
-        # deno
         parallel
         difftastic
         docker
@@ -30,12 +27,8 @@
         fd
         gh
         git-open
-        # gleam
         graph-easy
         glow
-        # go-task
-        # golangci-lint-langserver
-        # golangci-lint
         hadolint
         jq
         yq
@@ -60,9 +53,6 @@
         pgformatter
         pipenv
         nixd
-        # rubyPackages_3_1.rubocop
-        # rubyPackages_3_1.solargraph
-        # ruby_3_1
         slides
         taplo
         tmate
