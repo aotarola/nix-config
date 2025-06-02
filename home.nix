@@ -99,6 +99,7 @@
         ns = "npm start";
         s = "kitty +kitten ssh";
         ai = "aichat -e ";
+        gor = "go run .";
       };
   };
 

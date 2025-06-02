@@ -449,6 +449,13 @@ let
         rev = "dd27fe0eff8e7f8184dfc91e426b886dc8369c46";
       };
     }
+    {
+      name = "wit";
+      source = {
+        git = "https://github.com/liamwh/tree-sitter-wit.git";
+        rev = "3d6124cfe88555ecee1ba97d6d76c70d13af927a";
+      };
+    }
   ];
 
   languages.language =
@@ -510,6 +517,15 @@ let
         file-types = [ "bru" ];
         roots = [ ];
         # comment-token = "#";
+        indent = { tab-width = 2; unit = " "; };
+      }
+      {
+        name = "wit";
+        scope = "source.wit";
+        injection-regex = "wit";
+        file-types = [ "wit" ];
+        roots = [ ];
+        comment-token = "//";
         indent = { tab-width = 2; unit = " "; };
       }
       {
