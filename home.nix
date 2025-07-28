@@ -31,7 +31,7 @@
         hadolint
         jq
         yq
-        kubectl
+        minikube
         less
         lsd
         ltex-ls
