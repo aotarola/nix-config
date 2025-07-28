@@ -1,7 +1,6 @@
 let
   settings =
     {
-      # theme = "catppuccin_mocha";
       theme = "dracula";
       editor = {
         color-modes = true;
@@ -283,8 +282,7 @@ let
         {
           command = "elm-language-server";
           config = {
-            # onlyUpdateDiagnosticsOnSave = true;
-            elmReviewDiagnostics = "error";
+              elmReviewDiagnostics = "error";
           };
         };
 
@@ -470,7 +468,6 @@ let
           except-features = [ "format" ];
         }
         "eslint"
-        # "copilot"
       ];
     in
     [
@@ -503,12 +500,6 @@ let
         language-servers = [ "bal" ];
         indent =
           { tab-width = 2; unit = " "; };
-        # formatter =
-        #   {
-        #     command = "roc";
-        #     args = [ "format" "--stdin" "--stdout" ];
-        #   };
-        # auto-format = true;
       }
       {
         name = "bruno";
@@ -631,12 +622,7 @@ let
             name = "ruff-lsp";
             only-features = [ "format" "diagnostics" ];
           }
-          # {
-          #   name = "ruff-formatter";
-          #   only-features = [ "format" ];
-          # }
-          # "copilot"
-        ];
+          ];
       }
       {
         name = "elm";

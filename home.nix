@@ -62,7 +62,6 @@
     sessionVariables = {
       EDITOR = "hx";
       VISUAL = "hx";
-      # DOCKER_HOST = "unix://$HOME/.colima/docker.sock";
       ELM_HOME="$HOME/.local/elm";
       PNPM_HOME = "$HOME/.local/pnpm";
       AWS_SDK_JS_SUPPRESS_MAINTENANCE_MODE_MESSAGE = "1";
@@ -79,7 +78,7 @@
     shellAliases =
       {
         c = "cd ~/.config/nixpkgs";
-        cdr = "alias gitroot='cd $(git rev-parse --show-toplevel)'";
+        cdr = "cd $(git rev-parse --show-toplevel)";
         ga = "git add";
         gc = "git commit";
         gca = "git commit -v -a";

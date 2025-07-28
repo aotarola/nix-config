@@ -12,18 +12,16 @@
     };
 
     utils.url = "github:numtide/flake-utils";
-    nci.url = "github:yusdacra/nix-cargo-integration";
   };
 
   outputs =
-    { self, nci, utils, home-manager, nixpkgs, nixpkgs-unstable, helix-custom, rust-overlay }:
+    { self, utils, home-manager, nixpkgs, nixpkgs-unstable, helix-custom, rust-overlay }:
     utils.lib.eachDefaultSystem (system:
     let
       helixOverlay = import overlays/helix.nix helix-custom system;
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
-        config.allowUnfreePredicate = (_: true);
         overlays = [ helixOverlay (import rust-overlay) ];
       };
       homeConfig = home-manager.lib.homeManagerConfiguration {
@@ -32,7 +30,7 @@
             username = "aotarola";
             unstablePkgs = import nixpkgs-unstable {
               inherit system;
-              config.allowUnfree = true; # If you need unfree packages
+              config.allowUnfree = true;
           };
         };
         modules = [ ./home.nix ];
