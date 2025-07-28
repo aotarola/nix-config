@@ -77,6 +77,7 @@
 
     shellAliases =
       {
+        ai = "aichat -e ";
         c = "cd ~/.config/nixpkgs";
         cdr = "cd $(git rev-parse --show-toplevel)";
         ga = "git add";
@@ -86,6 +87,7 @@
         gd = "git diff";
         ggpull = "git pull";
         ggpush = "git push";
+        gox = "go run .";
         gs = "git status";
         gwa = "git wf abort";
         gwd = "git wf done";
@@ -93,12 +95,11 @@
         gws = "git wf start";
         h = "hx";
         k = "kubectl";
+        kubectl="minikube kubectl --";
         ls = "lsd";
         nci = "npm ci";
         ns = "npm start";
         s = "kitty +kitten ssh";
-        ai = "aichat -e ";
-        gox = "go run .";
       };
   };
 
