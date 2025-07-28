@@ -1,4 +1,4 @@
-{ username, pkgs, ... }:
+{ username, pkgs, unstablePkgs, ... }:
 
 {
   home = {
@@ -31,7 +31,7 @@
         hadolint
         jq
         yq
-        minikube
+        unstablePkgs.minikube
         less
         lsd
         ltex-ls
@@ -102,6 +102,7 @@
         gox = "go run .";
       };
   };
+
 
   programs.helix = import ./programs/helix.nix;
 

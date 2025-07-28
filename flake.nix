@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     helix-custom.url = "github:helix-editor/helix?rev=47547e94ad89cda4dbab15b57abcf4981d101b85";
     rust-overlay.url = "github:oxalica/rust-overlay";
     home-manager = {
@@ -15,7 +16,7 @@
   };
 
   outputs =
-    { self, nci, utils, home-manager, nixpkgs, helix-custom, rust-overlay }:
+    { self, nci, utils, home-manager, nixpkgs, nixpkgs-unstable, helix-custom, rust-overlay }:
     utils.lib.eachDefaultSystem (system:
     let
       helixOverlay = import overlays/helix.nix helix-custom system;
@@ -27,7 +28,13 @@
       };
       homeConfig = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        extraSpecialArgs = { username = "aotarola"; };
+        extraSpecialArgs = {
+            username = "aotarola";
+            unstablePkgs = import nixpkgs-unstable {
+              inherit system;
+              config.allowUnfree = true; # If you need unfree packages
+          };
+        };
         modules = [ ./home.nix ];
       };
     in
