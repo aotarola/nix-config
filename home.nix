@@ -31,6 +31,7 @@
         hadolint
         jq
         yq
+        unstablePkgs.kubectl
         unstablePkgs.minikube
         less
         lsd
@@ -95,7 +96,7 @@
         gws = "git wf start";
         h = "hx";
         k = "kubectl";
-        kubectl="minikube kubectl --";
+        # kubectl="minikube kubectl --";
         ls = "lsd";
         nci = "npm ci";
         ns = "npm start";
