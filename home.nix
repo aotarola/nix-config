@@ -65,6 +65,7 @@
       VISUAL = "hx";
       ELM_HOME="$HOME/.local/elm";
       PNPM_HOME = "$HOME/.local/pnpm";
+      # DOCKER_HOST = "unix://$HOME/.colima/docker.sock";
       AWS_SDK_JS_SUPPRESS_MAINTENANCE_MODE_MESSAGE = "1";
     };
 
@@ -96,7 +97,6 @@
         gws = "git wf start";
         h = "hx";
         k = "kubectl";
-        # kubectl="minikube kubectl --";
         ls = "lsd";
         nci = "npm ci";
         ns = "npm start";

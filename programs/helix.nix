@@ -56,7 +56,7 @@ let
           C-q = [ ":echo %sh{echo -n @%{buffer_name}:%{cursor_line} | pbcopy | echo \"%{buffer_name}:%{cursor_line} copied to clipboard!\"}" ];
           C-a = [ ":echo %sh{echo -n @%{buffer_name} | pbcopy | echo \"%{buffer_name} copied to clipboard!\"}" ];
           C-x = [ ":reset-diff-change" ];
-          C-p = [ "goto_first_diag" ];
+          C-p = [ "goto_prev_diag" ];
           C-n = [ "goto_next_diag" ];
           C-r = [ ":config-reload" ":reload-all" ];
           C-l = {
