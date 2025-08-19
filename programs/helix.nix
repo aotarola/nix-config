@@ -228,6 +228,11 @@ let
         args = [ "server" "-m" "stream" ];
       };
 
+      godot = {
+        command = "socat";
+        args = ["STDIO" "TCP:127.0.0.1:6005"];
+      };
+
       typescript =
         {
           command = "typescript-language-server";
@@ -580,6 +585,24 @@ let
       {
         name = "markdown";
         auto-format = true;
+        injection-regex = "md|markdown";
+        file-types = [
+          "prompt"
+          "md"
+          "livemd"
+          "markdown"
+          "mdx"
+          "mkd"
+          "mkdn"
+          "mdwn"
+          "mdown"
+          "markdn"
+          "mdtxt"
+          "mdtext"
+          "workbook"
+          { glob = "PULLREQ_EDITMSG"; }
+        ];
+        
         language-servers = [
           {
             name = "markdown";
@@ -593,7 +616,7 @@ let
             name = "markdown-linter";
             only-features = [ "diagnostics" ];
           }
-          "ltex"
+          # "ltex"
         ];
       }
       {
@@ -629,6 +652,14 @@ let
         auto-format = true;
         language-servers = [ "elm-lsp" ];
       }
+
+      {
+        name = "gdscript";
+        auto-format = true;
+        language-servers = [ "godot" ];
+        formatter = {command = "gdformat"; args = ["-"]; };
+      }
+      
     ];
 
 in
