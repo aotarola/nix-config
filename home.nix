@@ -26,13 +26,13 @@
         fd
         gh
         git-open
+        git-lfs
         graph-easy
         glow
         hadolint
         jq
         yq
         unstablePkgs.kubectl
-        unstablePkgs.minikube
         less
         lsd
         ltex-ls
