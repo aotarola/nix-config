@@ -124,6 +124,7 @@
 
         plugins = [
           "vi-mode"
+          "kube-ps1"
         ];
       };
 
@@ -141,6 +142,15 @@
     autoload -Uz bashcompinit && bashcompinit
     . "${pkgs.asdf-vm}/share/asdf-vm/completions/asdf.bash"
     # eval $(opam env --switch=default --set-switch)
+    
+    # Enable kube-ps1 for kubectl context in prompt
+    KUBE_PS1_ENABLED=on
+    KUBE_PS1_SYMBOL_ENABLE=false
+    KUBE_PS1_PREFIX="["
+    KUBE_PS1_SUFFIX="]"
+    
+    # Add kube-ps1 to the right prompt
+    RPROMPT='$(kube_ps1)'
     '';
 
   };
