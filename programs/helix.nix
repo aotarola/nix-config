@@ -160,13 +160,23 @@ let
       };
 
       rust-analyzer = {
-        config.rust-analyzer = {
-          cargo.loadOutDirsFromCheck = true;
-          checkOnSave.command = "clippy";
-          procMacro.enable = true;
-          lens = { references = true; methodReferences = true; };
-          completion.autoimport.enable = true;
-          experimental.procAttrMacros = true;
+        command = "rust-analyzer";
+        config = {
+          check = "clippy";
+          rustc = {
+            source = "discover";
+          };
+          inlayHints = {
+            bindingModeHints.enable = false;
+            closingBraceHints.minLines = 10;
+            closureReturnTypeHints.enable = "with_block";
+            discriminantHints.enable = "fieldless";
+            lifetimeElisionHints.enable = "skip_trivial";
+            typeHints.hideClosureInitialization = false;
+          };
+          files = {
+            watcher = "server";
+          };
         };
       };
 
@@ -529,7 +539,32 @@ let
         auto-format = false;
         language-servers = [ {name = "nix-lsp"; except-features = ["format"]; } ];
       }
-      { name = "rust"; auto-format = true; file-types = [ "lalrpop" "rs" ]; language-servers = [ "rust-analyzer" ]; }
+      # { name = "rust"; auto-format = true; file-types = [ "lalrpop" "rs" ]; language-servers = [ "rust-analyzer" ]; }
+      #
+
+      {
+        name = "rust";
+        scope = "source.rust";
+        injection-regex = "rs|rust";
+        file-types = ["rs"];
+        roots = ["Cargo.toml" "Cargo.lock"];
+        shebangs = ["rust-script" "cargo"];
+        auto-format = true;
+        comment-tokens = ["//" "///" "//!"];
+        block-comment-tokens = [
+          { start = "/*"; end = "*/"; }
+          { start = "/**"; end = "*/"; }
+          { start = "/*!"; end = "*/"; }
+        ];
+        language-servers = ["rust-analyzer"];
+        indent = {
+          tab-width = 4;
+          unit = "    ";
+        };
+        persistent-diagnostic-sources = ["rustc" "clippy"];
+        formatter =  { command = "rustfmt"; };
+      }
+      
       { name = "sql"; auto-format = true; formatter.command = "pg_format"; }
       {
         name = "json";
