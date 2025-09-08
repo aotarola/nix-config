@@ -82,6 +82,7 @@
         ai = "aichat -e ";
         c = "cd ~/.config/nixpkgs";
         cdr = "cd $(git rev-parse --show-toplevel)";
+        cx = "cargo run";
         ga = "git add";
         gc = "git commit";
         gca = "git commit -v -a";
@@ -100,8 +101,7 @@
         ls = "lsd";
         nci = "npm ci";
         ns = "npm start";
-        s = "kitty +kitten ssh";
-      };
+        s = "kitty +kitten ssh";};
   };
 
 
