@@ -162,7 +162,9 @@ let
       rust-analyzer = {
         command = "rust-analyzer";
         config = {
-          check = "clippy";
+          check = {
+            command = "clippy";
+          };
           rustc = {
             source = "discover";
           };
