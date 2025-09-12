@@ -587,8 +587,6 @@ let
         auto-format = false;
         language-servers = [ {name = "nix-lsp"; except-features = ["format"]; } ];
       }
-      # { name = "rust"; auto-format = true; file-types = [ "lalrpop" "rs" ]; language-servers = [ "rust-analyzer" ]; }
-      #
 
       {
         name = "rust";
