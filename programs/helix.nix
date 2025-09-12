@@ -89,6 +89,21 @@ let
     language-server = {
       # LSPs
 
+      superhtml-lsp = {
+        command = "superhtml";
+        args = ["lsp"];
+      };
+
+      ziggy-lsp = {
+        command = "ziggy";
+        args = ["lsp"];
+      };
+
+      ziggy-schema = {
+        command = "ziggy";
+        args = ["lsp" "--schema"];
+      };
+
       ltex = {
         command = "ltex-ls";
         config = {
@@ -471,6 +486,37 @@ let
         rev = "3d6124cfe88555ecee1ba97d6d76c70d13af927a";
       };
     }
+    # TODO: Replace the following grammars once they become part of helix
+    {
+      name = "ziggy";
+      source = {
+        path = "/Users/aotarola/dev/ziggy/tree-sitter-ziggy";
+      };
+    }
+    {
+      name = "ziggy_schema";
+      source = {
+        path = "/Users/aotarola/dev/ziggy/tree-sitter-ziggy-schema";
+      };
+    }
+    {
+      name = "supermd";
+      source = {
+        path = "/Users/aotarola/dev/supermd/tree-sitter/supermd";
+      };
+    }
+    {
+      name = "supermd_inline";
+      source = {
+        path = "/Users/aotarola/dev/supermd/tree-sitter/supermd-inline";
+      };
+    }
+    {
+      name = "superhtml";
+      source = {
+        path = "/Users/aotarola/dev/superhtml/tree-sitter-superhtml";
+      };
+    }
   ];
 
   languages.language =
@@ -613,11 +659,24 @@ let
       }
       {
         name = "html";
+        scope = "source.html";
+        roots = [];
+        file-types = ["html"];
         auto-format = true;
         language-servers = [
-          { name = "html"; except-features = [ "format" ]; }
-          { name = "html-formatter"; only-features = [ "format" ]; }
+          # { name = "html"; except-features = [ "format" ]; }
+          # { name = "html-formatter"; only-features = [ "format" ]; }
+          "superhtml-lsp"
         ];
+      }
+      {
+        name = "superhtml";
+        scope = "source.superhtml";
+        roots = [];
+        file-types = ["shtml"];
+        injection-regex = "superhtml|shtml";
+        auto-format = true;
+        language-servers = [ "superhtml-lsp" ];
       }
       {
         name = "markdown";
@@ -696,7 +755,44 @@ let
         language-servers = [ "godot" ];
         formatter = {command = "gdformat"; args = ["-"]; };
       }
-      
+
+      {
+        name = "ziggy";
+        auto-format = true;
+        scope = "text.ziggy";
+        roots = [];
+        injection-regex = "ziggy|zgy";
+        file-types = ["ziggy" "zgy"];
+        comment-token = "//";
+        language-servers = [ "ziggy-lsp" ];
+        formatter = {command = "ziggy"; args = ["fmt" "--stdin"]; };
+      }
+      {
+        name = "ziggy_schema";
+        auto-format = true;
+        scope = "text.ziggy_schema";
+        roots = [];
+        injection-regex = "ziggy-schema|zgy-schema";
+        file-types = ["ziggy-schema" "zgy-schema"];
+        comment-token = "///";
+        indent = {tab-width=4; unit="    ";};
+        language-servers = [ "ziggy-lsp" ];
+        formatter = {command = "ziggy-schema-lsp"; args = ["fmt" "--stdin"]; };
+      }
+      {
+        name = "supermd";
+        scope = "source.supermd";
+        roots = [];
+        file-types = ["smd"];
+        injection-regex = "supermd|smd";
+      }
+      {
+        name = "supermd_inline";
+        scope = "source.supermd.inline";
+        injection-regex = "supermd_inline";
+        file-types = [];
+        grammar = "supermd_inline";
+      }
     ];
 
 in
