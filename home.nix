@@ -101,6 +101,7 @@
         ls = "lsd";
         nci = "npm ci";
         ns = "npm start";
+        t = "task";
         s = "kitty +kitten ssh";};
   };
 
