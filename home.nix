@@ -83,6 +83,7 @@
         c = "cd ~/.config/nixpkgs";
         cdr = "cd $(git rev-parse --show-toplevel)";
         cx = "cargo run";
+        bx = "bevy run";
         ga = "git add";
         gc = "git commit";
         gca = "git commit -v -a";
