@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-nix run . switch -- --flake .
+nix run .#packages.aarch64-darwin.default

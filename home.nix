@@ -39,7 +39,6 @@
         marksman
         ncdu
         neovim
-        nodePackages."@prisma/language-server"
         nodePackages.bash-language-server
         nodePackages.fixjson
         nodePackages.markdownlint-cli
