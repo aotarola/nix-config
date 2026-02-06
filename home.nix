@@ -1,4 +1,4 @@
-{ username, pkgs, unstablePkgs, ... }:
+{ username, pkgs, unstablePkgs, config, ... }:
 
 {
   home = {
@@ -117,7 +117,7 @@
 
   programs.zsh = {
     enable = true;
-    dotDir = ".config/zsh";
+    dotDir = "${config.home.homeDirectory}/.config/zsh";
 
     oh-my-zsh =
       {
@@ -138,18 +138,21 @@
 
     };
 
-    initExtra = ''
-    . "${pkgs.asdf-vm}/share/asdf-vm/asdf.sh"
+    initContent = ''
+    # asdf-vm setup (0.18.0+ Go version)
+    export ASDF_DIR="${pkgs.asdf-vm}"
+    export PATH="''${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+
+    # asdf completions
     autoload -Uz bashcompinit && bashcompinit
-    . "${pkgs.asdf-vm}/share/asdf-vm/completions/asdf.bash"
-    # eval $(opam env --switch=default --set-switch)
-    
+    . "${pkgs.asdf-vm}/share/bash-completion/completions/asdf.bash"
+
     # Enable kube-ps1 for kubectl context in prompt
     KUBE_PS1_ENABLED=on
     KUBE_PS1_SYMBOL_ENABLE=false
     KUBE_PS1_PREFIX="["
     KUBE_PS1_SUFFIX="]"
-    
+
     # Add kube-ps1 to the right prompt
     RPROMPT='$(kube_ps1)'
     '';
@@ -164,27 +167,45 @@
     };
   };
 
+  programs.difftastic = {
+    enable = true;
+    git.enable = true;
+  };
+
   programs.git = {
     enable = true;
-    userName = "Andres Otarola";
-    userEmail = "andres@otarola.me";
-    aliases = {
-      prettylog = "...";
-    };
-    difftastic = {
-      enable = true;
-    };
-    extraConfig = {
-      core = {
-        editor = "hx";
-        excludesfile = "~/.gitignore";
+    ignores = [
+      ".DS_Store"
+      "*.pyc"
+      "*.log"
+      "*.pdf"
+      "*.orig"
+      "*.fls"
+      "*.fdb_latexmk"
+      "*.gz"
+      "*.sublime-project"
+      "*.sublime-workspace"
+      ".vscode/"
+      ".vim/"
+      ".vimspector.json"
+      ".marksman.toml"
+    ];
+    settings = {
+      user = {
+        name = "Andres Otarola";
+        email = "andres@otarola.me";
       };
       alias = {
+        prettylog = "...";
         amend = "commit -a --amend --no-edit";
         r = "remote --verbose";
         repo = "open";
         dft = "difftool";
         sync = "!git switch main && git pull --prune && git branch --format '%(refname:short) %(upstream:track)' | awk '$2 == \"[gone]\" { print $1 }' | xargs -r git branch -D";
+      };
+      core = {
+        editor = "hx";
+        excludesfile = "~/.gitignore";
       };
       color = {
         ui = true;
@@ -202,21 +223,5 @@
         defaultBranch = "main";
       };
     };
-    ignores = [
-      ".DS_Store"
-      "*.pyc"
-      "*.log"
-      "*.pdf"
-      "*.orig"
-      "*.fls"
-      "*.fdb_latexmk"
-      "*.gz"
-      "*.sublime-project"
-      "*.sublime-workspace"
-      ".vscode/"
-      ".vim/"
-      ".vimspector.json"
-      ".marksman.toml"
-    ];
   };
 }

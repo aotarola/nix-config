@@ -19,15 +19,17 @@
 
   outputs =
     { self, utils, home-manager, nixpkgs, nixpkgs-unstable, helix-custom, rust-overlay }:
-    utils.lib.eachDefaultSystem (system:
     let
+      system = "aarch64-darwin";
       helixOverlay = import overlays/helix.nix helix-custom system;
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
         overlays = [ helixOverlay (import rust-overlay) ];
       };
-      homeConfig = home-manager.lib.homeManagerConfiguration {
+    in
+    {
+      homeConfigurations.aotarola = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         extraSpecialArgs = {
             username = "aotarola";
@@ -38,12 +40,5 @@
         };
         modules = [ ./home.nix ];
       };
-    in
-    {
-      homeConfigurations.andres = homeConfig;
-
-      packages = {
-        default = homeConfig.activationPackage;
-      };
-    });
+    };
 }

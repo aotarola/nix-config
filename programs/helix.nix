@@ -462,7 +462,7 @@ let
       name = "roc";
       source = {
         git = "https://github.com/faldor20/tree-sitter-roc.git";
-        rev = "0b1afe88161cbd81f5ddea1bb4fa786314ed49a7";
+        rev = "edc18052a9d7382ac9f9f5bf413db3a78d5ea12c";
       };
     }
     {
