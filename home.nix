@@ -1,10 +1,14 @@
-{ username, pkgs, unstablePkgs, config, ... }:
+{ username, pkgs, lib, unstablePkgs, config, ... }:
 
+let
+  isDarwin = pkgs.stdenv.isDarwin;
+  isLinux = pkgs.stdenv.isLinux;
+in
 {
   home = {
-    inherit username;   
+    inherit username;
 
-    homeDirectory = "/Users/" + username;
+    homeDirectory = if isDarwin then "/Users/${username}" else "/home/${username}";
     stateVersion = "23.05";
 
     packages = with pkgs;
@@ -15,7 +19,6 @@
         awscli2
         graphviz
         btop
-        colima
         cowsay
         parallel
         difftastic
@@ -57,7 +60,9 @@
         tree
         tree-sitter
         wget
-      ];
+      ]
+      ++ lib.optionals isDarwin [ colima ]
+      ++ lib.optionals isLinux [ xclip ];
 
     sessionVariables = {
       EDITOR = "hx";
@@ -73,6 +78,7 @@
       "$HOME/.local/bin"
       "$HOME/.local/pnpm"
       "$HOME/.local/elm"
+    ] ++ lib.optionals isDarwin [
       "/Applications/Postgres.app/Contents/Versions/latest/bin"
     ];
 
@@ -106,7 +112,7 @@
   };
 
 
-  programs.helix = import ./programs/helix.nix;
+  programs.helix = import ./programs/helix.nix { inherit isDarwin isLinux config; };
 
   programs.home-manager.enable = true;
 
@@ -117,7 +123,7 @@
 
   programs.zsh = {
     enable = true;
-    dotDir = "${config.home.homeDirectory}/.config/zsh";
+    dotDir = "${config.xdg.configHome}/zsh";
 
     oh-my-zsh =
       {

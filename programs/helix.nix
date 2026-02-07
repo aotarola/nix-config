@@ -1,4 +1,9 @@
+{ isDarwin, isLinux, config }:
+
 let
+  clipboardCmd = if isDarwin then "pbcopy" else "xclip -selection clipboard";
+  homeDir = config.home.homeDirectory;
+
   settings =
     {
       theme = "dracula";
@@ -53,8 +58,8 @@ let
       keys = {
         normal = {
           C-b = [ ":echo %sh{git blame -L %{cursor_line},+1 %{buffer_name}}" ];
-          C-q = [ ":echo %sh{echo -n @%{buffer_name}:%{cursor_line} | pbcopy | echo \"%{buffer_name}:%{cursor_line} copied to clipboard!\"}" ];
-          C-a = [ ":echo %sh{echo -n @%{buffer_name} | pbcopy | echo \"%{buffer_name} copied to clipboard!\"}" ];
+          C-q = [ ":echo %sh{echo -n @%{buffer_name}:%{cursor_line} | ${clipboardCmd} | echo \"%{buffer_name}:%{cursor_line} copied to clipboard!\"}" ];
+          C-a = [ ":echo %sh{echo -n @%{buffer_name} | ${clipboardCmd} | echo \"%{buffer_name} copied to clipboard!\"}" ];
           C-x = [ ":reset-diff-change" ];
           C-p = [ "goto_prev_diag" ];
           C-n = [ "goto_next_diag" ];
@@ -490,31 +495,31 @@ let
     {
       name = "ziggy";
       source = {
-        path = "/Users/aotarola/dev/ziggy/tree-sitter-ziggy";
+        path = "${homeDir}/dev/ziggy/tree-sitter-ziggy";
       };
     }
     {
       name = "ziggy_schema";
       source = {
-        path = "/Users/aotarola/dev/ziggy/tree-sitter-ziggy-schema";
+        path = "${homeDir}/dev/ziggy/tree-sitter-ziggy-schema";
       };
     }
     {
       name = "supermd";
       source = {
-        path = "/Users/aotarola/dev/supermd/tree-sitter/supermd";
+        path = "${homeDir}/dev/supermd/tree-sitter/supermd";
       };
     }
     {
       name = "supermd_inline";
       source = {
-        path = "/Users/aotarola/dev/supermd/tree-sitter/supermd-inline";
+        path = "${homeDir}/dev/supermd/tree-sitter/supermd-inline";
       };
     }
     {
       name = "superhtml";
       source = {
-        path = "/Users/aotarola/dev/superhtml/tree-sitter-superhtml";
+        path = "${homeDir}/dev/superhtml/tree-sitter-superhtml";
       };
     }
   ];

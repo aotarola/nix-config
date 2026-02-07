@@ -1,2 +1,6 @@
 #!/usr/bin/env bash
-home-manager switch --flake .#aotarola
+if [[ "$(uname -s)" == "Darwin" ]]; then
+    home-manager switch --flake .#aotarola
+else
+    home-manager switch --flake .#aotarola@linux
+fi

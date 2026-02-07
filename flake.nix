@@ -20,25 +20,33 @@
   outputs =
     { self, utils, home-manager, nixpkgs, nixpkgs-unstable, helix-custom, rust-overlay }:
     let
-      system = "aarch64-darwin";
-      helixOverlay = import overlays/helix.nix helix-custom system;
-      pkgs = import nixpkgs {
+      mkPkgs = system: import nixpkgs {
         inherit system;
         config.allowUnfree = true;
-        overlays = [ helixOverlay (import rust-overlay) ];
+        overlays = [
+          (import overlays/helix.nix helix-custom system)
+          (import rust-overlay)
+        ];
       };
-    in
-    {
-      homeConfigurations.aotarola = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        extraSpecialArgs = {
+
+      mkHomeConfig = system:
+        let
+          pkgs = mkPkgs system;
+        in
+        home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          extraSpecialArgs = {
             username = "aotarola";
             unstablePkgs = import nixpkgs-unstable {
               inherit system;
               config.allowUnfree = true;
+            };
           };
+          modules = [ ./home.nix ];
         };
-        modules = [ ./home.nix ];
-      };
+    in
+    {
+      homeConfigurations.aotarola = mkHomeConfig "aarch64-darwin";
+      homeConfigurations."aotarola@linux" = mkHomeConfig "x86_64-linux";
     };
 }
