@@ -161,6 +161,46 @@ in
 
     # Add kube-ps1 to the right prompt
     RPROMPT='$(kube_ps1)'
+    '' + lib.optionalString isDarwin ''
+    # Fix /etc/zshrc after macOS updates overwrite nix shell integration
+    append_nix_to_zshrc() {
+      local source_file="/etc/zshrc.nix-restore"
+      local dest_file="/etc/zshrc"
+
+      if [[ ! -f "$source_file" ]]; then
+        echo "❌ Error: Source file not found at '$source_file'" >&2
+        return 1
+      fi
+
+      if [[ -f "$dest_file" ]]; then
+        local source_content=$(cat "$source_file")
+        local dest_content=$(cat "$dest_file")
+
+        if [[ "$dest_content" == *"$source_content"* ]]; then
+          echo "✅ Content already present in '$dest_file'. No action needed."
+          return 0
+        fi
+      fi
+
+      if [[ -f "$dest_file" ]]; then
+        local timestamp=$(date +%Y-%m-%d-%H%M%S)
+        local backup_file="''${dest_file}.bak-''${timestamp}"
+
+        echo "Backing up current '$dest_file' to '$backup_file'..."
+        sudo cp "$dest_file" "$backup_file"
+        if [[ $? -ne 0 ]]; then
+            echo "❌ Error: Backup failed. Aborting." >&2
+            return 1
+        fi
+      fi
+
+      echo "Appending content from '$source_file' to '$dest_file'..."
+      cat "$source_file" | sudo tee -a "$dest_file" > /dev/null
+
+      echo "🚀 Append complete."
+    }
+
+    alias fix_zshrc=append_nix_to_zshrc
     '';
 
   };
