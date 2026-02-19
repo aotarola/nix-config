@@ -1,49 +1,69 @@
 # Nix config
 
-Home configuration for all my programs
+Home configuration for all my programs, managed with [home-manager](https://github.com/nix-community/home-manager) and [Nix flakes](https://nixos.wiki/wiki/Flakes).
 
-It has my username hard-coded, but you can fork and change it to yours
+To fork this config, change the `username` variable in `flake.nix`.
 
 ## Installation
 
+### macOS
+
 1. Install [Nix](https://nixos.org/download.html)
 
-1. Create the config folders
-
    ```sh
-   mkdir -p ~/.config/nixpkgs
+   sh <(curl -L https://nixos.org/nix/install)
    ```
 
 1. Enable experimental features
 
    ```sh
+   mkdir -p ~/.config/nix
    echo "experimental-features = nix-command flakes" > ~/.config/nix/nix.conf
    ```
 
-1. Set unstable channel
+1. Install [Ghostty](https://ghostty.org/) via `.dmg` or Homebrew
 
    ```sh
-   nix-channel --add https://nixos.org/channels/nixpkgs-unstable unstable
+   brew install --cask ghostty
    ```
 
-1. Clone the repo
+1. Clone the repo and apply
 
    ```sh
    git clone git@github.com:aotarola/nix-config.git ~/.config/nixpkgs
+   cd ~/.config/nixpkgs && ./switch.sh
    ```
 
-1. Build it
+### Arch Linux
+
+1. Install Nix
 
    ```sh
-   ./switch.sh
+   sudo pacman -S nix
+   sudo systemctl enable --now nix-daemon.service
+   sudo usermod -aG nix-users $USER
+   ```
+
+   Then log out and back in.
+
+1. Enable experimental features
+
+   ```sh
+   mkdir -p ~/.config/nix
+   echo "experimental-features = nix-command flakes" > ~/.config/nix/nix.conf
+   ```
+
+1. Clone the repo and apply
+
+   ```sh
+   git clone git@github.com:aotarola/nix-config.git ~/.config/nixpkgs
+   cd ~/.config/nixpkgs && ./switch.sh
    ```
 
 ## Usage
 
-Every time a new config change is done, update the system with:
+After making config changes, apply them with:
 
 ```sh
-./switch.sh
+cd ~/.config/nixpkgs && ./switch.sh
 ```
-
-_CAVEAT_: third maybenot change

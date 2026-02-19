@@ -20,6 +20,9 @@
   outputs =
     { self, utils, home-manager, nixpkgs, nixpkgs-unstable, helix-custom, rust-overlay }:
     let
+      # Change this to your username when forking
+      username = "aotarola";
+
       mkPkgs = system: import nixpkgs {
         inherit system;
         config.allowUnfree = true;
@@ -36,7 +39,7 @@
         home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           extraSpecialArgs = {
-            username = "aotarola";
+            inherit username;
             unstablePkgs = import nixpkgs-unstable {
               inherit system;
               config.allowUnfree = true;
@@ -46,7 +49,7 @@
         };
     in
     {
-      homeConfigurations.aotarola = mkHomeConfig "aarch64-darwin";
-      homeConfigurations."aotarola@linux" = mkHomeConfig "x86_64-linux";
+      homeConfigurations.${username} = mkHomeConfig "aarch64-darwin";
+      homeConfigurations."${username}@linux" = mkHomeConfig "x86_64-linux";
     };
 }
