@@ -205,6 +205,40 @@ in
 
   };
 
+  programs.ghostty = {
+    enable = true;
+    package = if isDarwin then null else pkgs.ghostty;
+    enableZshIntegration = true;
+    settings = {
+      theme = "Dracula";
+      font-family = "JetBrainsMono Nerd Font Medium";
+      font-family-bold = "JetBrainsMono Nerd Font Bold";
+      font-family-italic = "JetBrainsMono Nerd Font Italic";
+      font-family-bold-italic = "JetBrainsMono Nerd Font Bold Italic";
+      font-size = 17;
+      cursor-style-blink = false;
+      font-thicken = true;
+      font-thicken-strength = 255;
+      window-padding-x = 10;
+      window-padding-y = 10;
+      window-save-state = "never";
+      macos-option-as-alt = true;
+      shell-integration-features = "no-cursor,no-sudo,title";
+      keybind = [
+        "super+left=previous_tab"
+        "super+right=next_tab"
+        "cmd+l=new_split:right"
+        "super+k=goto_split:previous"
+        "super+j=goto_split:next"
+        "super+shift+f=toggle_split_zoom"
+        "super+enter=new_split:down"
+        "super+x=close_window"
+        "super+o=clear_screen"
+        "shift+enter=text:\\n"
+      ];
+    };
+  };
+
   programs.bat = {
     enable = true;
     config = {
