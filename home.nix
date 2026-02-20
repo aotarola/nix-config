@@ -112,6 +112,26 @@ in
   };
 
 
+  home.file.".claude/hooks/notify.sh" = {
+    source = ./scripts/claude-notify.sh;
+    executable = true;
+  };
+
+  home.file.".claude/settings.json".text = builtins.toJSON {
+    hooks = {
+      Stop = [{
+        hooks = [{
+          type = "command";
+          command = "${config.home.homeDirectory}/.claude/hooks/notify.sh";
+        }];
+      }];
+    };
+    enabledPlugins = {
+      "superpowers@claude-plugins-official" = true;
+      "gopls-lsp@claude-plugins-official" = true;
+    };
+  };
+
   programs.helix = import ./programs/helix.nix { inherit isDarwin isLinux config; };
 
   programs.home-manager.enable = true;
