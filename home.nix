@@ -3,6 +3,12 @@
 let
   isDarwin = pkgs.stdenv.isDarwin;
   isLinux = pkgs.stdenv.isLinux;
+  claude-statusline = pkgs.fetchFromGitHub {
+    owner = "skydiver";
+    repo = "claude-code-statusline";
+    rev = "2591d4da593e4037554d030b86c1fec852995add";
+    sha256 = "1yds3ibmfpnpcp022i0p8yakgv40hl2aflh8vvglmw8dwfs5wdk6";
+  };
 in
 {
   home = {
@@ -117,6 +123,11 @@ in
     executable = true;
   };
 
+  home.file.".claude/hooks/statusline.sh" = {
+    source = "${claude-statusline}/statusline.sh";
+    executable = true;
+  };
+
   home.file.".claude/settings.json".text = builtins.toJSON {
     hooks = {
       Stop = [{
@@ -129,6 +140,11 @@ in
     enabledPlugins = {
       "superpowers@claude-plugins-official" = true;
       "gopls-lsp@claude-plugins-official" = true;
+    };
+    statusLine = {
+      type = "command";
+      command = "${config.home.homeDirectory}/.claude/hooks/statusline.sh";
+      padding = 0;
     };
   };
 
