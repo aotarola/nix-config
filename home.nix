@@ -189,6 +189,9 @@ in
     autoload -Uz bashcompinit && bashcompinit
     . "${pkgs.asdf-vm}/share/bash-completion/completions/asdf.bash"
 
+    # go-task completions
+    eval "$(task --completion zsh)"
+
     # Enable kube-ps1 for kubectl context in prompt
     KUBE_PS1_ENABLED=on
     KUBE_PS1_SYMBOL_ENABLE=false
