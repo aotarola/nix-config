@@ -213,7 +213,7 @@ in
   programs.ghostty = {
     enable = true;
     package = if isDarwin then null else pkgs.ghostty;
-    enableZshIntegration = true;
+    enableZshIntegration = false;
     settings = {
       theme = "Dracula";
       font-family = "JetBrainsMono Nerd Font Medium";
@@ -228,7 +228,7 @@ in
       window-padding-y = 10;
       window-save-state = "never";
       macos-option-as-alt = true;
-      shell-integration-features = "no-cursor,no-sudo,title";
+      shell-integration = "none";
       keybind = [
         "super+left=previous_tab"
         "super+right=next_tab"
