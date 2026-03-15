@@ -62,7 +62,7 @@ in
         tree-sitter
         wget
       ]
-      ++ lib.optionals isDarwin [ colima ]
+      # ++ lib.optionals isDarwin [ colima ]
       ++ lib.optionals isLinux [ xclip ];
 
     sessionVariables = {

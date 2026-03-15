@@ -5,7 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     helix-custom = {
-      url = "github:helix-editor/helix?rev=98765acf25a43e6bb606bea1527226be4b290ea4";
+      url = "github:helix-editor/helix?rev=b3d6e35f5d6d04152478403f654ce08b42ac310c";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     rust-overlay.url = "github:oxalica/rust-overlay";
