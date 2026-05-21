@@ -107,7 +107,6 @@ in
         k = "kubectl";
         ls = "lsd";
         nci = "npm ci";
-        t = "task";
         s = "kitty +kitten ssh";};
   };
 
@@ -125,6 +124,7 @@ in
 
   programs.zsh = {
     enable = true;
+    enableCompletion = false;
     dotDir = "${config.xdg.configHome}/zsh";
 
     oh-my-zsh =
@@ -147,16 +147,23 @@ in
     };
 
     initContent = ''
+    # rustup completions — add to fpath before compinit
+    fpath=("$HOME/.rustup/toolchains/stable-aarch64-apple-darwin/share/zsh/site-functions" $fpath)
+
+    autoload -Uz compinit && compinit
+    autoload -Uz bashcompinit && bashcompinit
+
     # asdf-vm setup (0.18.0+ Go version)
     export ASDF_DIR="${pkgs.asdf-vm}"
     export PATH="''${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 
     # asdf completions
-    autoload -Uz bashcompinit && bashcompinit
     . "${pkgs.asdf-vm}/share/bash-completion/completions/asdf.bash"
 
     # go-task completions
-    eval "$(task --completion zsh)"
+    if command -v task >/dev/null 2>&1; then
+      eval "$(task --completion zsh)"
+    fi
 
     # Enable kube-ps1 for kubectl context in prompt
     KUBE_PS1_ENABLED=on
