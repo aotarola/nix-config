@@ -22,7 +22,6 @@ in
         btop
         cowsay
         parallel
-        difftastic
         docker
         docker-compose
         efm-langserver
@@ -259,11 +258,6 @@ in
     };
   };
 
-  programs.difftastic = {
-    enable = true;
-    git.enable = true;
-  };
-
   programs.git = {
     enable = true;
     ignores = [
@@ -298,6 +292,7 @@ in
       core = {
         editor = "hx";
         excludesfile = "~/.gitignore";
+        pager = "hunk pager";
       };
       color = {
         ui = true;
