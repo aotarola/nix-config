@@ -236,16 +236,40 @@ in
       macos-option-as-alt = true;
       shell-integration = "none";
       keybind = [
-        "super+left=previous_tab"
-        "super+right=next_tab"
-        "super+h=goto_split:left"
-        "super+l=goto_split:right"
-        "super+k=goto_split:up"
-        "super+j=goto_split:down"
-        "super+shift+f=toggle_split_zoom"
-        "cmd+b=new_split:right"
-        "super+enter=new_split:down"
-        "super+x=close_window"
+        # Herdr-aligned Ghostty prefix bindings.
+        # Ghostty prefix: ctrl+g
+        # Herdr prefix:   ctrl+b
+        "ctrl+g>ctrl+g=text:\\x07"
+
+        "ctrl+g>p=previous_tab"
+        "ctrl+g>n=next_tab"
+        "ctrl+g>c=new_tab"
+
+        "ctrl+g>1=goto_tab:1"
+        "ctrl+g>2=goto_tab:2"
+        "ctrl+g>3=goto_tab:3"
+        "ctrl+g>4=goto_tab:4"
+        "ctrl+g>5=goto_tab:5"
+        "ctrl+g>6=goto_tab:6"
+        "ctrl+g>7=goto_tab:7"
+        "ctrl+g>8=goto_tab:8"
+        "ctrl+g>9=goto_tab:9"
+
+        "ctrl+g>h=goto_split:left"
+        "ctrl+g>j=goto_split:down"
+        "ctrl+g>k=goto_split:up"
+        "ctrl+g>l=goto_split:right"
+
+        "ctrl+g>v=new_split:right"
+        "ctrl+g>minus=new_split:down"
+        "ctrl+g>x=close_surface"
+        "ctrl+g>z=toggle_split_zoom"
+
+        "ctrl+g>shift+t=prompt_tab_title"
+        "ctrl+g>shift+p=prompt_surface_title"
+        "ctrl+g>shift+x=close_tab:this"
+        "ctrl+g>shift+r=reload_config"
+
         "super+o=clear_screen"
         "shift+enter=text:\\n"
       ];
