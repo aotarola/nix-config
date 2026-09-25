@@ -42,15 +42,15 @@ in
         marksman
         ncdu
         neovim
-        nodePackages.bash-language-server
-        nodePackages.fixjson
-        nodePackages.markdownlint-cli
-        nodePackages.mermaid-cli
-        nodePackages.prettier
-        nodePackages.typescript-language-server
-        nodePackages.yaml-language-server
-        nodePackages.yarn
-        nodePackages_latest.vscode-langservers-extracted
+        bash-language-server
+        fixjson
+        markdownlint-cli
+        mermaid-cli
+        prettier
+        typescript-language-server
+        yaml-language-server
+        yarn
+        vscode-langservers-extracted
         pgformatter
         pipenv
         nixd

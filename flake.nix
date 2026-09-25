@@ -26,8 +26,12 @@
       mkPkgs = system: import nixpkgs {
         inherit system;
         config.allowUnfree = true;
+        config.permittedInsecurePackages = [
+          "tmate-unstable-2022-08-07"
+        ];
         overlays = [
           (import overlays/helix.nix helix-custom system)
+          (import overlays/asdf-vm.nix)
           (import rust-overlay)
         ];
       };
