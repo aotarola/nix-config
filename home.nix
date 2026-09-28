@@ -22,6 +22,7 @@ in
         btop
         cowsay
         parallel
+        difftastic
         docker
         docker-compose
         efm-langserver
@@ -312,7 +313,7 @@ in
         amend = "commit -a --amend --no-edit";
         r = "remote --verbose";
         repo = "open";
-        dft = "difftool";
+        dft = "-c diff.external=difft -c core.pager='less -R' diff";
         sync = "!git switch main && git pull --prune && git branch --format '%(refname:short) %(upstream:track)' | awk '$2 == \"[gone]\" { print $1 }' | xargs -r git branch -D";
       };
       core = {
