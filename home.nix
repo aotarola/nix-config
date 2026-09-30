@@ -1,8 +1,8 @@
 { username, pkgs, lib, unstablePkgs, config, ... }:
 
 let
-  isDarwin = pkgs.stdenv.isDarwin;
-  isLinux = pkgs.stdenv.isLinux;
+  isDarwin = pkgs.stdenv.hostPlatform.isDarwin;
+  isLinux = pkgs.stdenv.hostPlatform.isLinux;
 
 in
 {
@@ -57,7 +57,6 @@ in
         nixd
         slides
         taplo
-        tmate
         tree
         tree-sitter
         wget
@@ -302,14 +301,17 @@ in
       ".vim/"
       ".vimspector.json"
       ".marksman.toml"
+      ".genkit"
+      "coverage.txt"
+      ".claude"
+      ".wrangler"
     ];
     settings = {
       user = {
         name = "Andres Otarola";
-        email = "andres@otarola.me";
+        email = "andres@aliengiraffe.ai";
       };
       alias = {
-        prettylog = "...";
         amend = "commit -a --amend --no-edit";
         r = "remote --verbose";
         repo = "open";
@@ -318,7 +320,6 @@ in
       };
       core = {
         editor = "hx";
-        excludesfile = "~/.gitignore";
         pager = "hunk pager";
       };
       color = {
