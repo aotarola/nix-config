@@ -1,4 +1,4 @@
-{ username, pkgs, lib, unstablePkgs, config, ... }:
+{ username, pkgs, lib, unstablePkgs, opentofuPkgs, config, ... }:
 
 let
   isDarwin = pkgs.stdenv.hostPlatform.isDarwin;
@@ -55,6 +55,7 @@ in
         pgformatter
         pipenv
         nixd
+        opentofuPkgs.opentofu
         slides
         taplo
         tree

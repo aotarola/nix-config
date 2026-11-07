@@ -58,6 +58,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-opentofu": {
+      "locked": {
+        "lastModified": 1790238896,
+        "narHash": "sha256-ym4BG18Pu2awiJIehla1Lo9xiB2QYRcCzW3SB74gEBY=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "34ca302a9572963c02e385c056be37c85ff51b77",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "34ca302a9572963c02e385c056be37c85ff51b77",
+        "type": "github"
+      }
+    },
     "nixpkgs-unstable": {
       "locked": {
         "lastModified": 1790238896,
@@ -95,6 +111,7 @@
         "helix-custom": "helix-custom",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
+        "nixpkgs-opentofu": "nixpkgs-opentofu",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "rust-overlay": "rust-overlay_2",
         "utils": "utils"
