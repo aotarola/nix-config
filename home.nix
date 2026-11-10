@@ -215,6 +215,13 @@ in
     alias fix_zshrc=append_nix_to_zshrc
     '';
 
+    profileExtra = ''
+      # Load machine-specific profile (API keys, Homebrew, Nix PATH, etc.)
+      if [[ -f "$HOME/.config/zsh/.zprofile.local" ]]; then
+        . "$HOME/.config/zsh/.zprofile.local"
+      fi
+    '';
+
   };
 
   programs.ghostty = {
