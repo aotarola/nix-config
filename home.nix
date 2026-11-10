@@ -4,6 +4,27 @@ let
   isDarwin = pkgs.stdenv.hostPlatform.isDarwin;
   isLinux = pkgs.stdenv.hostPlatform.isLinux;
 
+  # Per-machine flags from ~/.config/nixpkgs/.env (git-ignored; see .env.example). A flake only
+  # sees tracked files, so the file is read by absolute path, which needs --impure (switch.sh).
+  home = builtins.getEnv "HOME";
+  envFile = "${home}/.config/nixpkgs/.env";
+  localEnv =
+    if home == "" then
+      throw "home.nix reads per-machine flags from ~/.config/nixpkgs/.env: run ./switch.sh (it passes --impure)"
+    else if !(builtins.pathExists envFile) then
+      { }
+    else
+      let
+        lines = lib.splitString "\n" (builtins.readFile envFile);
+        pairs = map (builtins.match "[[:space:]]*([A-Za-z_][A-Za-z0-9_]*)[[:space:]]*=[[:space:]]*\"?([^\"#[:space:]]*)\"?.*") lines;
+      in
+      builtins.listToAttrs (map (m: { name = builtins.elemAt m 0; value = builtins.elemAt m 1; })
+        (builtins.filter (m: m != null) pairs));
+  flag = name: lib.elem (lib.toLower (localEnv.${name} or "")) [ "1" "true" "yes" ];
+
+  # Colima as this machine's Docker (the CI hosts mini and m2pro), with DOCKER_HOST pointing at it.
+  useColima = isDarwin && flag "USE_COLIMA";
+
 in
 {
   home = {
@@ -62,7 +83,7 @@ in
         tree-sitter
         wget
       ]
-      # ++ lib.optionals isDarwin [ colima ]
+      ++ lib.optionals useColima [ colima ]
       ++ lib.optionals isLinux [ xclip ];
 
     sessionVariables = {
@@ -70,8 +91,9 @@ in
       VISUAL = "hx";
       ELM_HOME="$HOME/.local/elm";
       PNPM_HOME = "$HOME/.local/pnpm";
-      # DOCKER_HOST = "unix://$HOME/.colima/docker.sock";
       AWS_SDK_JS_SUPPRESS_MAINTENANCE_MODE_MESSAGE = "1";
+    } // lib.optionalAttrs useColima {
+      DOCKER_HOST = "unix://$HOME/.colima/docker.sock";
     };
 
     sessionPath = [

@@ -44,11 +44,14 @@
           inherit pkgs;
           extraSpecialArgs = {
             inherit username;
+            # overlays = [ ] on every import: switch.sh evaluates with --impure, and then nixpkgs
+            # would also load ~/.config/nixpkgs/overlays (this repo's overlays, meant for mkPkgs).
             unstablePkgs = import nixpkgs-unstable {
               inherit system;
               config.allowUnfree = true;
+              overlays = [ ];
             };
-            opentofuPkgs = import nixpkgs-opentofu { inherit system; };
+            opentofuPkgs = import nixpkgs-opentofu { inherit system; config = { }; overlays = [ ]; };
           };
           modules = [ ./home.nix ];
         };
