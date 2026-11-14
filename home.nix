@@ -121,10 +121,6 @@ in
         ggpush = "git push";
         gox = "go run .";
         gs = "git status";
-        gwa = "git wf abort";
-        gwd = "git wf done";
-        gwp = "git wf pr";
-        gws = "git wf start";
         h = "hx";
         k = "kubectl";
         ls = "lsd";
